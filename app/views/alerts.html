@@ -1,0 +1,19 @@
+<pagination total-items="pagination.total_count"
+            ng-model="pagination.current_page"
+            items-per-page="pagination.limit"
+            max-size="10"></pagination>
+
+<div ng-repeat="alert in alerts">
+    <h2><a ng-href="#/alerts/{{alert.id}}">{{alert.title}}
+        <small> - par {{alert.user_id | toReadableUser}}</small>
+    </a></h2>
+
+    <p>{{alert.price | currency}}</p>
+
+    <p>{{alert.content}}</p>
+</div>
+
+<pagination total-items="pagination.total_count"
+            ng-model="pagination.current_page"
+            items-per-page="pagination.limit"
+            max-size="10"></pagination>
