@@ -8,6 +8,7 @@
     <p>{{alert.content}}</p>
 
     <button class="btn btn-primary" ng-click="edit()" ng-if="alert.user_id === authUser.id">Editer</button>
+    <button class="btn btn-danger" ng-click="delete()" ng-if="alert.user_id === authUser.id">Supprimer</button>
 </div>
 
 <alert type="danger" ng-show="error">Veuillez corriger vos erreurs</alert>

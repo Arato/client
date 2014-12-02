@@ -13,9 +13,10 @@ angular.module('aratoappApp')
 AlertService.$inject = ['$http', 'RouteService'];
 function AlertService($http, RouteService) {
     var service = {
-        index: index,
-        show : show,
-        save : save
+        index : index,
+        show  : show,
+        save  : save,
+        delete: del
     };
 
     function index(params) {
@@ -38,6 +39,10 @@ function AlertService($http, RouteService) {
             url   : url,
             data  : data
         })
+    }
+
+    function del(id) {
+        return $http.delete(RouteService.alerts + '/' + id);
     }
 
     return service;

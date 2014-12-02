@@ -10,8 +10,8 @@
 angular.module('aratoappApp')
     .controller('AlertCtrl', AlertCtrl);
 
-AlertCtrl.$inject = ['$scope', '$routeParams', 'AlertService'];
-function AlertCtrl($scope, $routeParams, AlertService) {
+AlertCtrl.$inject = ['$scope', '$routeParams', 'AlertService', '$location'];
+function AlertCtrl($scope, $routeParams, AlertService, $location) {
     window.scope = $scope;
 
     $scope.editable = false;
@@ -19,7 +19,8 @@ function AlertCtrl($scope, $routeParams, AlertService) {
     $scope.error = false;
 
     activate();
-    $scope.edit = edit;
+    $scope.edit = editAlert;
+    $scope.delete = deleteAlert;
     $scope.saveAlert = saveAlert;
 
 
@@ -41,8 +42,22 @@ function AlertCtrl($scope, $routeParams, AlertService) {
         }
     }
 
-    function edit() {
+    function editAlert() {
         $scope.editable = true;
+    }
+
+    function deleteAlert() {
+        AlertService.delete($routeParams.alertId)
+            .success(successCallback)
+            .error(errorCallback);
+
+        function successCallback() {
+            $location.path("/");
+        }
+
+        function errorCallback(error) {
+            throw new Error(error);
+        }
     }
 
     function saveAlert() {
