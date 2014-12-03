@@ -7,10 +7,11 @@
     <h2><a ng-href="#/alerts/{{alert.id}}">{{alert.title}}
         <small> - par {{alert.user_id | toReadableUser}}</small>
     </a></h2>
-
+    <em>Le {{alert.created_at | date:'dd/MM/yyyy HH:mm'}}</em>
     <p>{{alert.price | currency}}</p>
 
     <p>{{alert.content}}</p>
+
 </div>
 
 <pagination total-items="pagination.total_count"
