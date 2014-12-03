@@ -27,6 +27,7 @@ function AlertCtrl($scope, $routeParams, AlertService, $location) {
     function activate() {
         if ($routeParams.alertId === 'new') {
             $scope.editable = true;
+            $scope.alert = {};
         }
         else {
             AlertService.show($routeParams.alertId)
@@ -34,6 +35,7 @@ function AlertCtrl($scope, $routeParams, AlertService, $location) {
                 .error(errorCallback);
         }
         function successCallback(result) {
+            console.log(result);
             $scope.alert = result.data;
         }
 
@@ -66,7 +68,7 @@ function AlertCtrl($scope, $routeParams, AlertService, $location) {
 
         var id = $routeParams.alertId !== 'new' ? $routeParams.alertId : undefined;
         var data = $scope.alert;
-
+        console.log($scope);
         AlertService.save(id, data)
             .success(successCallback)
             .error(errorCallback)

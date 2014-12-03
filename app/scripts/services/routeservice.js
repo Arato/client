@@ -12,7 +12,7 @@ angular.module('aratoappApp')
 
 RouteService.$inject = [];
 function RouteService() {
-    var baseUrl = "http://arato.local:8000";
+    var baseUrl = "http://arato.local.192.168.1.9.xip.io:8000";
 
     return {
         login : getUrl("/login"),
