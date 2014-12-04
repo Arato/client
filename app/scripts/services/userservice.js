@@ -14,7 +14,8 @@ UserService.$inject = ['$http', 'RouteService'];
 function UserService($http, RouteService) {
     var service = {
         getUsers  : getUsers,
-        fetchUsers: fetchUsers
+        fetchUsers: fetchUsers,
+        emptyUsers: emptyUsers
     };
     return service;
 
@@ -24,19 +25,26 @@ function UserService($http, RouteService) {
     }
 
     function fetchUsers() {
+        var deferred = $q.defer();
+
         $http.get(RouteService.users)
             .success(successCallback)
             .error(errorCallback);
 
+        return deferred.promise;
+
         function successCallback(response) {
             var users = response.data;
             localStorage.setItem('users', JSON.stringify(users));
-            return users;
+            deferred.resolve(users);
         }
 
         function errorCallback(error) {
-            throw new Error(error);
+            deferred.reject(error);
         }
     }
 
+    function emptyUsers() {
+        localStorage.removeItem('users');
+    }
 }

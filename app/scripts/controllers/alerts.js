@@ -26,19 +26,22 @@ function AlertsCtrl($scope, AlertService) {
 
     }
 
-
     function updateAlerts() {
         var params = {
             page: $scope.pagination.current_page
         };
 
         AlertService.index(params)
-            .then(function (response) {
-                return response.data;
-            })
-            .then(function (alerts) {
-                $scope.alerts = alerts.data;
-                $scope.pagination = alerts.paginate;
-            });
+            .then(thenCallback)
+            .catch(catchCallback);
+
+        function thenCallback(results) {
+            $scope.alerts = results.data;
+            $scope.pagination = results.paginate;
+        }
+
+        function catchCallback(error) {
+            throw new Error(error);
+        }
     }
 }

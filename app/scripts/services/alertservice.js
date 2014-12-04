@@ -10,40 +10,94 @@
 angular.module('aratoappApp')
     .service('AlertService', AlertService);
 
-AlertService.$inject = ['$http', 'RouteService'];
-function AlertService($http, RouteService) {
+AlertService.$inject = ['$http', '$q', 'RouteService'];
+function AlertService($http, $q, RouteService) {
     var service = {
         index : index,
         show  : show,
         save  : save,
         delete: del
     };
-
+    return service;
+    
     function index(params) {
-        return $http.get(RouteService.alerts, {params: params});
+        var deferred = $q.defer();
+
+        $http.get(RouteService.alerts, {params: params})
+            .success(successCallback)
+            .error(errorCallback);
+
+        return deferred.promise;
+
+        function successCallback(results) {
+            deferred.resolve(results);
+        }
+
+        function errorCallback(error) {
+            deferred.reject(error);
+        }
     }
 
     function show(id) {
-        return $http.get(RouteService.alerts + '/' + id);
+        var deferred = $q.defer();
+
+        $http.get(RouteService.alerts + '/' + id)
+            .success(successCallback)
+            .error(errorCallback);
+
+        return deferred.promise;
+
+        function successCallback(result) {
+            deferred.resolve(result.data);
+        }
+
+        function errorCallback(error) {
+            deferred.reject(error);
+        }
     }
 
     function save(id, data) {
+        var deferred = $q.defer();
         var method = id ? 'PUT' : 'POST';
 
         var url = RouteService.alerts;
         if (id) {
             url = url + '/' + id;
         }
-        return $http({
+        $http({
             method: method,
             url   : url,
             data  : data
         })
+            .success(successCallback)
+            .error(errorCallback);
+
+        return deferred.promise;
+
+        function successCallback(result) {
+            deferred.resolve(result);
+        }
+
+        function errorCallback(error) {
+            deferred.reject(error);
+        }
     }
 
     function del(id) {
-        return $http.delete(RouteService.alerts + '/' + id);
-    }
+        var deferred = $q.defer();
 
-    return service;
+        $http.delete(RouteService.alerts + '/' + id)
+            .success(successCallback)
+            .error(errorCallback);
+
+        return deferred.promise;
+
+        function successCallback(result) {
+            deferred.resolve(result);
+        }
+
+        function errorCallback(error) {
+            deferred.reject(error);
+        }
+    }
 }

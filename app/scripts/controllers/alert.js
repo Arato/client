@@ -31,12 +31,11 @@ function AlertCtrl($scope, $routeParams, AlertService, $location) {
         }
         else {
             AlertService.show($routeParams.alertId)
-                .success(successCallback)
-                .error(errorCallback);
+                .then(successCallback)
+                .catch(errorCallback);
         }
         function successCallback(result) {
-            console.log(result);
-            $scope.alert = result.data;
+            $scope.alert = result;
         }
 
         function errorCallback(error) {
@@ -50,8 +49,8 @@ function AlertCtrl($scope, $routeParams, AlertService, $location) {
 
     function deleteAlert() {
         AlertService.delete($routeParams.alertId)
-            .success(successCallback)
-            .error(errorCallback);
+            .then(successCallback)
+            .catch(errorCallback);
 
         function successCallback() {
             $location.path("/");
@@ -68,14 +67,12 @@ function AlertCtrl($scope, $routeParams, AlertService, $location) {
 
         var id = $routeParams.alertId !== 'new' ? $routeParams.alertId : undefined;
         var data = $scope.alert;
-        console.log($scope);
         AlertService.save(id, data)
-            .success(successCallback)
-            .error(errorCallback)
+            .then(successCallback)
+            .catch(errorCallback)
             .finally(finallyFn);
 
         function successCallback(result) {
-            console.log("r", result);
             $scope.alert = result.data;
             $scope.editable = false;
         }

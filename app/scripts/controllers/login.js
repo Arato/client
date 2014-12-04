@@ -18,6 +18,8 @@ function LoginCtrl($scope, AuthService, $location, UserService) {
 
     function activate() {
         AuthService.clearCredentials();
+        UserService.emptyUsers();
+
         $scope.loading = false;
         $scope.error = false;
     }
