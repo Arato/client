@@ -83,33 +83,3 @@ body {
         border-bottom : 0;
     }
 }
-
-[ng\:cloak], [ng-cloak], .ng-cloak { display : none !important; }
-
-.directive-password .ng-hide.ng-animate {
-    display : none !important;
-}
-
-.directive-password {
-    position : relative;
-}
-
-.directive-password button {
-    position      : absolute;
-    bottom        : 0;
-    background    : transparent;
-    border        : none;
-    right         : 0;
-    height        : 34px;
-    padding-left  : 12px;
-    padding-right : 12px;
-}
-
-.directive-password input {
-    padding-right : 38px;
-}
-
-.directive-password button:focus,
-.directive-password button:active {
-    outline : 0;
-}
