@@ -17,7 +17,7 @@ function password() {
         replace    : true,
         scope      : {
             ngModel    : '=',
-            placeholder: '@?'
+            placeholder: '@'
         }
     };
     return directive;
@@ -26,14 +26,14 @@ function password() {
         scope.visibility = false;
 
         activate();
+        scope.toggleVisibility = toggleVisibility;
 
         function activate() {
         };
 
-        scope.toggleVisibility = toggleVisibility;
-
         function toggleVisibility() {
             scope.visibility = !scope.visibility;
+            element.find('input').prop('type', scope.visibility ? 'text' : 'password');
         }
     }
 }
