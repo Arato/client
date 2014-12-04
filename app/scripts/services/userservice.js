@@ -10,8 +10,8 @@
 angular.module('aratoappApp')
     .service('UserService', UserService);
 
-UserService.$inject = ['$http', 'RouteService'];
-function UserService($http, RouteService) {
+UserService.$inject = ['$http', '$q', 'RouteService'];
+function UserService($http, $q, RouteService) {
     var service = {
         getUsers  : getUsers,
         fetchUsers: fetchUsers,
