@@ -2,7 +2,7 @@
 
 angular
     .module('aratoappApp')
-    .run(run)
+    .run(run);
 
 run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
 function run($rootScope, $location, $cookieStore, $http) {
