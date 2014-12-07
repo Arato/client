@@ -25,7 +25,7 @@ function AlertCtrl($scope, $routeParams, AlertService, $location) {
 
 
     function activate() {
-        if ($routeParams.alertId === 'new') {
+        if (!$routeParams.alertId) {
             $scope.editable = true;
             $scope.alert = {};
         }
@@ -47,8 +47,8 @@ function AlertCtrl($scope, $routeParams, AlertService, $location) {
         $scope.editable = true;
     }
 
-    function deleteAlert() {
-        AlertService.delete($routeParams.alertId)
+    function deleteAlert(id) {
+        AlertService.delete(id)
             .then(successCallback)
             .catch(errorCallback);
 
@@ -73,7 +73,7 @@ function AlertCtrl($scope, $routeParams, AlertService, $location) {
             .finally(finallyFn);
 
         function successCallback(result) {
-            $scope.alert = result.data;
+            $scope.alert = result.alerts;
             $scope.editable = false;
         }
 

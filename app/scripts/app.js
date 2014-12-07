@@ -28,13 +28,13 @@ angular
                 templateUrl: 'views/alerts.html',
                 controller : 'AlertsCtrl'
             })
-            .when('/alerts/:alertId', {
+            .when('/alerts/new', {
                 templateUrl: 'views/alert.html',
                 controller : 'AlertCtrl'
             })
-            .when('/alerts/new', {
-                templateUrl: 'views/new-alert.html',
-                controller : 'AlertsCtrl'
+            .when('/alerts/:alertId', {
+                templateUrl: 'views/alert.html',
+                controller : 'AlertCtrl'
             })
             .otherwise({
                 redirectTo: '/alerts'

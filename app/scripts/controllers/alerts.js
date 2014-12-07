@@ -36,7 +36,7 @@ function AlertsCtrl($scope, AlertService) {
             .catch(catchCallback);
 
         function thenCallback(results) {
-            $scope.alerts = results.data;
+            $scope.alerts = results.alerts;
             $scope.pagination = results.paginate;
         }
 
