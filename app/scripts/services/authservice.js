@@ -38,8 +38,8 @@ function AuthService($q, $http, RouteService, $rootScope, $cookieStore, Base64) 
             deferred.resolve();
         }
 
-        function errorCallback(error) {
-            deferred.reject(error);
+        function errorCallback(response) {
+            deferred.reject(response.error);
         }
 
         return deferred.promise;

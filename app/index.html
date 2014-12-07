@@ -8,11 +8,11 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/style.css">
     <!-- endbuild -->
 </head>
 <body ng-app="aratoappApp" ng-cloak>
@@ -21,17 +21,51 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-if="authUser.id">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">aratoapp</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#/">Alertes</a></li>
+                <li><a href="#/alerts/new"><i class="glyphicon glyphicon-plus"></i></a></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{authUser.email}}
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/profile">Mon profile</a></li>
+                        <li class="divider"></li>
+                        <li><a ng-href="#/login" ng-click="logout()">Se déconnecter</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
 <!-- Add your site or application content here -->
 <div class="container">
-    <div class="header">
-        <ul class="nav nav-pills pull-right" ng-if="authUser.id">
-            <li><a ng-href="#/alerts/new" ng-click="logout()"><i class="glyphicon glyphicon-plus"></i></a></li>
-            <li class="disabled"><a>{{authUser.email}}</a></li>
-            <li><a ng-href="#/login" ng-click="logout()">Se déconnecter</a></li>
-        </ul>
-        <h3 class="text-muted"><a ng-href="#/">aratoapp</a></h3>
-    </div>
-
     <div ng-view=""></div>
 </div>
 

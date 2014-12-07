@@ -1,0 +1,39 @@
+@import "/bower_components/bootstrap/less/bootstrap";
+@import "variables";
+
+body { padding-top : 70px; }
+
+.panel {
+    .panel-footer {
+        visibility : hidden;
+        &.panel-nav {
+            padding : 0;
+        }
+    }
+    &:hover {
+        .panel-footer {
+            visibility : visible;
+        }
+    }
+
+    &.panel-alt {
+        .panel-title {
+            text-transform : uppercase;
+            font-family    : Lato, 'Helvetica Neue', sans-serif;
+            font-weight    : 500;
+            + p {
+                color         : rgba(0, 0, 0, 0.5);
+                font-size     : 13px;
+                line-height   : 18px;
+                margin-top    : 5px;
+                margin-bottom : 0;
+            }
+        }
+
+        &.panel-default {
+            .panel-title + p {
+                color : #77818e;
+            }
+        }
+    }
+}

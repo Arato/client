@@ -3,15 +3,25 @@
             items-per-page="pagination.limit"
             max-size="10"></pagination>
 
-<div ng-repeat="alert in alerts">
-    <h2><a ng-href="#/alerts/{{alert.id}}">{{alert.title}}
-        <small> - par {{alert.user_id | toReadableUser}}</small>
-    </a></h2>
-    <em>Le {{alert.created_at | date:'dd/MM/yyyy HH:mm'}}</em>
-    <p>{{alert.price | currency}}</p>
+<div class="panel panel-alt" ng-repeat="alert in alerts"
+     ng-class="alert.user_id === authUser.id ? 'panel-primary' : 'panel-default'">
+    <div class="panel-heading">
+        <div class="pull-right">{{alert.price | currency}}</div>
+        <h2 class="panel-title">{{alert.title}}</h2>
 
-    <p>{{alert.content}}</p>
-
+        <p>Le {{alert.created_at | date:'dd/MM/yyyy HH:mm'}}
+            <em> - par {{alert.user_id | toReadableUser}}</em>
+        </p>
+    </div>
+    <div class="panel-body">
+        <p>{{alert.content}}</p>
+    </div>
+    <div class="panel-footer panel-nav">
+        <ul class="nav nav-pills nav-justified">
+            <li><a ng-href="#/alerts/{{alert.id}}">Voir</a></li>
+            <li ng-if="alert.user_id === authUser.id"><a href="" ng-click="deleteAlert(alert.id)">Supprimer</a></li>
+        </ul>
+    </div>
 </div>
 
 <pagination total-items="pagination.total_count"

@@ -29,7 +29,8 @@ function LoginCtrl($scope, AuthService, $location, UserService) {
         $scope.error = false;
 
         AuthService.login($scope.email, $scope.password)
-            .then(successCallback, errorCallback)
+            .then(successCallback)
+            .catch(errorCallback)
             .finally(finallyFn);
 
         function successCallback() {
@@ -39,7 +40,7 @@ function LoginCtrl($scope, AuthService, $location, UserService) {
 
         function errorCallback(error) {
             $scope.error = true;
-            throw new Error(error);
+            throw new Error(error.message);
         }
 
         function finallyFn() {

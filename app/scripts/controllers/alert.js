@@ -35,6 +35,7 @@ function AlertCtrl($scope, $routeParams, AlertService, $location) {
                 .catch(errorCallback);
         }
         function successCallback(result) {
+            console.log(result);
             $scope.alert = result;
         }
 

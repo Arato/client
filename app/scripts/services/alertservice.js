@@ -19,7 +19,7 @@ function AlertService($http, $q, RouteService) {
         delete: del
     };
     return service;
-    
+
     function index(params) {
         var deferred = $q.defer();
 
@@ -48,7 +48,7 @@ function AlertService($http, $q, RouteService) {
         return deferred.promise;
 
         function successCallback(result) {
-            deferred.resolve(result.data);
+            deferred.resolve(result.alerts);
         }
 
         function errorCallback(error) {
