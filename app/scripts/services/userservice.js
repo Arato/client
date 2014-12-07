@@ -33,8 +33,8 @@ function UserService($http, $q, RouteService) {
 
         return deferred.promise;
 
-        function successCallback(response) {
-            var users = response.data;
+        function successCallback(results) {
+            var users = results.users;
             localStorage.setItem('users', JSON.stringify(users));
             deferred.resolve(users);
         }
