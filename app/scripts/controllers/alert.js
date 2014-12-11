@@ -40,6 +40,9 @@ function AlertCtrl($scope, $routeParams, AlertService, $location) {
         }
 
         function errorCallback(error) {
+            if (error.status === 404) {
+                $location.path("404.html");
+            }
             throw new Error(error);
         }
     }
@@ -57,7 +60,7 @@ function AlertCtrl($scope, $routeParams, AlertService, $location) {
             $location.path("/");
         }
 
-        function errorCallback(error) {
+        function errorCallback(error, status) {
             throw new Error(error);
         }
     }

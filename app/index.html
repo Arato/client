@@ -33,31 +33,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#/">aratoapp</a>
+            <a class="navbar-brand" href="#/alerts">aratoapp</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="#/">Alertes</a></li>
-                <li><a href="#/alerts/new"><i class="glyphicon glyphicon-plus"></i></a></li>
-            </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{authUser.email}}
-                        <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#/profile">Mon profile</a></li>
-                        <li class="divider"></li>
-                        <li><a ng-href="#/login" ng-click="logout()">Se déconnecter</a></li>
-                    </ul>
+                <li ng-class="{'active' : location.path() == '/alerts'}">
+                    <a href="#/alerts">Alertes</a>
                 </li>
+            </ul>
+            <!--<form class="navbar-form navbar-left" role="search">-->
+            <!--<div class="form-group">-->
+            <!--<input type="text" class="form-control" placeholder="Search">-->
+            <!--</div>-->
+            <!--<button type="submit" class="btn btn-default">Submit</button>-->
+            <!--</form>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#/profile">{{authUser.email}}</a></li>
+                <li><a ng-href="#/login" ng-click="logout()"><i class="glyphicon glyphicon-log-out"></i></a></li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

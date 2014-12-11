@@ -12,6 +12,7 @@ function run($rootScope, $location, $cookieStore, $http) {
     $rootScope.$on("$routeChangeStart", routeChangeStart);
 
     function activate() {
+        $rootScope.location = $location;
         // keep user logged in after page refresh
         $rootScope.authUser = $cookieStore.get('authUser') || {};
 

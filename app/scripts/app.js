@@ -37,6 +37,6 @@ angular
                 controller : 'AlertCtrl'
             })
             .otherwise({
-                redirectTo: '/alerts'
+                templateUrl: '404.html'
             });
     });
