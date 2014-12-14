@@ -19,7 +19,7 @@ function ProfileCtrl($scope, $rootScope, ProfileService, $location) {
     function activate() {
         ProfileService.show($rootScope.authUser.id)
             .then(successCallback)
-            .catch(errorCallback)
+            .catch(errorCallback);
 
         function successCallback(result) {
             $scope.user = result;
@@ -45,14 +45,14 @@ function ProfileCtrl($scope, $rootScope, ProfileService, $location) {
             .catch(errorCallback)
             .finally(finallyFn);
 
-        function successCallback(result) {
+        function successCallback() {
             $location.path("/login");
             $scope.editable = false;
         }
 
         function errorCallback(error) {
             $scope.error = true;
-            throw new Error(error.reason);
+            throw new Error(error.reason.error.message);
         }
 
         function finallyFn() {
