@@ -16,13 +16,19 @@ angular
         'ngRoute',
         'ngSanitize',
         'ngTouch',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'ui.bootstrap.showErrors',
+        'angular-ladda'
     ])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/login', {
                 templateUrl: 'views/login.html',
                 controller : 'LoginCtrl'
+            })
+            .when('/profile', {
+                templateUrl: 'views/profile.html',
+                controller : 'ProfileCtrl'
             })
             .when('/alerts', {
                 templateUrl: 'views/alerts.html',

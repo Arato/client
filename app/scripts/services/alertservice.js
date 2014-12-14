@@ -51,11 +51,8 @@ function AlertService($http, $q, RouteService) {
             deferred.resolve(result.alerts);
         }
 
-        function errorCallback(reason, status) {
-            deferred.reject({
-                reason: reason,
-                status: status
-            });
+        function errorCallback(error) {
+            deferred.reject(error);
         }
     }
 

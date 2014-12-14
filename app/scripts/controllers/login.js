@@ -35,7 +35,7 @@ function LoginCtrl($scope, AuthService, $location, UserService) {
 
         function successCallback() {
             UserService.fetchUsers();
-            $location.path("/");
+            $location.path("/alerts");
         }
 
         function errorCallback(error) {

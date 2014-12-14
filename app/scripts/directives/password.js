@@ -11,25 +11,29 @@ angular.module('aratoappApp')
 
 function password() {
     var directive = {
+        require    : 'ngModel',
         templateUrl: 'scripts/directives/password.html',
         restrict   : 'E',
         link       : postLink,
         replace    : true,
         scope      : {
-            ngModel    : '=',
-            placeholder: '@'
+            ngModel    : '=ngModel',
+            placeholder: '@?',
+            label      : '@?',
+            name       : '@'
         }
     };
     return directive;
 
-    function postLink(scope, element, attrs) {
+    function postLink(scope, element, attrs, ngModelCtrl) {
         scope.visibility = false;
+        scope.ngModelCtrl = ngModelCtrl;
 
         activate();
         scope.toggleVisibility = toggleVisibility;
 
         function activate() {
-        };
+        }
 
         function toggleVisibility() {
             scope.visibility = !scope.visibility;

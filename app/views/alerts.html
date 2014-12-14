@@ -1,40 +1,36 @@
-<div class="row row-pagination">
-    <div class="pull-left">
-        <pagination total-items="pagination.total_count"
-                    ng-model="pagination.current_page"
-                    items-per-page="pagination.limit"
-                    ng-show="pagination.total_pages > 1"
-                    max-size="10"></pagination>
-    </div>
-    <div class="pull-right">
-        <a href="#/alerts/new" class="btn btn-success">
-            <i class="glyphicon glyphicon-plus"></i> Nouvelle alerte
-        </a>
-    </div>
-</div>
+<pagination total-items="pagination.total_count"
+            ng-model="pagination.current_page"
+            items-per-page="pagination.limit"
+            ng-show="pagination.total_pages > 1"
+            max-size="10"></pagination>
+
 <div class="row">
-    <div class="col-sm-12">
-        <div class="panel panel-alt" ng-repeat="alert in alerts"
+    <div class="col-sm-12" ng-repeat="alert in alerts">
+        <div class="panel panel-alt"
              ng-class="alert.id > seqNumber ? 'panel-success' : 'panel-default'">
             <div class="panel-heading">
-                <div class="pull-right">{{alert.created_at | date:'dd/MM/yyyy HH:mm'}}</div>
                 <h2 class="panel-title">{{alert.title}}</h2>
 
-                <p>Par {{alert.user_id | toReadableUser}}</p>
+                <p>{{alert.created_at | date:'dd/MM/yyyy HH:mm'}}</p>
             </div>
-            <div class="panel-body">{{alert.content}}</div>
+            <div class="panel-body">
+                <p class="text-muted">Par {{alert.user_id | toReadableUser}}</p>
+
+                <p>{{alert.content}}</p>
+            </div>
             <div class="panel-footer clearfix">
-                <ul class="pull-left list-inline text-muted">
+                <ul class="pull-left list-inline">
                     <li>{{alert.price | currency}}</li>
                 </ul>
                 <ul class="pull-right list-inline">
                     <li>
-                        <a ng-href="#/alerts/{{alert.id}}" class="btn btn-xs btn-default">
+                        <a ng-href="#/alerts/{{alert.id}}" tooltip="Modifier l'alerte" tooltip-append-to-body="true">
                             <i class="glyphicon glyphicon-pencil"></i>
                         </a>
                     </li>
                     <li ng-if="alert.user_id === authUser.id">
-                        <a href="" ng-click="deleteAlert(alert.id)" class="btn btn-xs btn-danger">
+                        <a href="" ng-click="deleteAlert(alert.id)" tooltip="Supprimer l'alerte"
+                           tooltip-append-to-body="true">
                             <i class="glyphicon glyphicon-trash"></i>
                         </a>
                     </li>
