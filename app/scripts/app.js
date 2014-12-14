@@ -22,6 +22,9 @@ angular
     ])
     .config(function ($routeProvider) {
         $routeProvider
+            .when('/', {
+                redirectTo: '/alerts'
+            })
             .when('/login', {
                 templateUrl: 'views/login.html',
                 controller : 'LoginCtrl'
