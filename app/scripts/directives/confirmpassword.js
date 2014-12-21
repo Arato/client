@@ -26,8 +26,12 @@ function confirmPassword() {
         scope.$watch('ngModel + toConfirm', watchForConfirmation, true);
 
         function watchForConfirmation() {
-            console.log("e", scope.toConfirm, scope.ngModel);
-            ngModelCtrl.$setValidity('confirm', scope.toConfirm === scope.ngModel);
+            var isValid = scope.toConfirm === scope.ngModel;
+            ngModelCtrl.$setValidity('confirm', isValid);
+
+            if (scope.confirmPasswordForm.password_confirmation) {
+                scope.confirmPasswordForm.password_confirmation.$setValidity('confirm', isValid);
+            }
         }
     }
 }

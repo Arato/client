@@ -1,14 +1,10 @@
 @import "/bower_components/bootstrap/less/bootstrap";
 @import "variables";
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+@import "animate";
+@import "bootswatch";
 
 body {
-    font-weight : 300;
-    padding-top : 70px;
-}
-
-.btn {
-    font-weight : 300;
+    padding-top : 80px;
 }
 
 .row-pagination {
@@ -51,37 +47,6 @@ body {
     .panel-footer {
         ul { margin-bottom : 0; }
     }
-}
-
-*,
-*:before,
-*:after { box-sizing : border-box !important; }
-
-.panel-brick {
-    margin : 1em;
-    width  : calc(100% / 3);
-    //padding-left   : 15px;
-    //padding-right  : 15px;
-    //vertical-align : top;
-
-    .panel {
-        //display : block;
-        //margin-bottom : 30px;
-    }
-}
-
-.pagination {
-    > li {
-        &,
-        &:first-child,
-        &:last-child {
-            > a,
-            > span {
-                border-radius : 25em;
-            }
-        }
-    }
-
 }
 
 .four-o-four {
@@ -219,5 +184,8 @@ body {
         padding : 0;
         border  : 0;
     }
+}
 
+.form-group.has-error .input-group-btn > .btn {
+    .btn-danger;
 }

@@ -1,8 +1,17 @@
-<pagination total-items="pagination.total_count"
-            ng-model="pagination.current_page"
-            items-per-page="pagination.limit"
-            ng-show="pagination.total_pages > 1"
-            max-size="10"></pagination>
+<div class="row row-pagination">
+    <div class="pull-left">
+        <a href="#/alerts/new" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus"></span> Ajouter une nouvelle alerte
+        </a>
+    </div>
+    <pagination total-items="pagination.total_count"
+                ng-model="pagination.current_page"
+                items-per-page="pagination.limit"
+                ng-show="pagination.total_pages > 1"
+                max-size="10"
+                class="pull-right"></pagination>
+</div>
+
 
 <div class="row">
     <div class="col-sm-12" ng-repeat="alert in alerts">
