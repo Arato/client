@@ -17,10 +17,9 @@
     </div>
 </div>
 
-<form name="alertForm" role="form" ng-submit="saveAlert()" ng-if="editable">
+<form name="alertForm" role="form" ng-submit="saveAlert()" ng-if="editable" animation="error">
+    <alert type="danger" ng-show="error">Veuillez corriger vos erreurs</alert>
     <div class="panel panel-default">
-        <alert type="danger" ng-show="error">Veuillez corriger vos erreurs</alert>
-
         <div class="panel-heading">
             <div class="form-group">
                 <label for="title">Titre</label>

@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-sm-offset-3 col-sm-6">
-        <div class="panel panel-default">
-            <form ng-submit="login()" name="loginForm" role="form">
+        <form ng-submit="login()" name="loginForm" role="form" animation="error">
+            <alert type="danger" ng-show="error">Mauvais identifiants</alert>
+
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Connexion</h2>
                 </div>
                 <div class="panel-body">
-                    <alert type="danger" ng-show="error">Mauvais identifiants</alert>
-
                     <div class="form-group">
                         <label for="email">Adresse email</label>
                         <input type="email" class="form-control" id="email" name="email"
@@ -24,7 +24,8 @@
                         Se connecter
                     </button>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
+
     </div>
 </div>

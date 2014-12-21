@@ -3,16 +3,43 @@
 angular.module('aratoappApp')
     .directive('animation', animation);
 
-animation.$inject = [];
-function animation() {
+animation.$inject = ['$timeout'];
+function animation($timeout) {
     var directive = {
-        template: '<div></div>',
-        restrict: 'E',
-        link    : postLink
+        restrict: 'A',
+        link    : postLink,
+        scope   : {
+            animation        : '=',
+            animationStyle   : '@?',
+            animationDuration: '@?'
+        }
     };
     return directive;
 
-    function postLink(scope, element, attrs) {
-        element.text('this is the animation directive');
+    function postLink(scope, element) {
+        var style = angular.isDefined(scope.animationStyle)
+            ? scope.animationStyle
+            : 'shake';
+        var duration = angular.isDefined(scope.animationDuration)
+            ? parseInt(scope.animationDuration)
+            : 1000;
+
+        activate();
+        function activate() {
+
+        }
+
+        scope.$watch('animation', function (newValue) {
+            if (newValue) {
+                launchAnimation();
+            }
+        });
+        function launchAnimation() {
+            element.addClass(style + " animated");
+
+            $timeout(function () {
+                element.removeClass(style + " animated");
+            }, duration);
+        }
     }
 }
