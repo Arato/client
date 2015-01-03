@@ -16,7 +16,8 @@ function AuthService($q, $http, RouteService, $rootScope, $cookieStore, Base64) 
     var service = {
         login           : login,
         logout          : logout,
-        clearCredentials: clearCredentials
+        clearCredentials: clearCredentials,
+        signup          : signup
     };
 
     return service;
@@ -79,5 +80,29 @@ function AuthService($q, $http, RouteService, $rootScope, $cookieStore, Base64) 
         $rootScope.authUser = {};
         $cookieStore.remove('authUser');
         $http.defaults.headers.common.Authorization = 'Basic ';
+    }
+
+    function signup(email, password, password_confirmation) {
+        var deferred = $q.defer();
+
+        var user = {
+            email                : email,
+            password             : password,
+            password_confirmation: password_confirmation
+        };
+
+        $http.post(RouteService.users, user)
+            .success(successCallback)
+            .error(errorCallback);
+
+        function successCallback(result) {
+            deferred.resolve(result);
+        }
+
+        function errorCallback(response) {
+            deferred.reject(response.error);
+        }
+
+        return deferred.promise;
     }
 }
