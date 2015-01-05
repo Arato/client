@@ -49,6 +49,14 @@ angular
                 templateUrl: 'views/alert.html',
                 controller : 'AlertCtrl'
             })
+            .when('/password/remind', {
+                templateUrl: 'views/password-remind.html',
+                controller : 'PasswordRemindCtrl'
+            })
+            .when('/password/reset/:token', {
+                templateUrl: 'views/password-reset.html',
+                controller : 'PasswordResetCtrl'
+            })
             .otherwise({
                 templateUrl: '404.html'
             });
