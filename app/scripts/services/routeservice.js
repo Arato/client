@@ -16,10 +16,12 @@ function RouteService() {
     var baseUrl = "http://arato.local:8000";
 
     return {
-        login : makeUrl("/login"),
-        logout: makeUrl("/logout"),
-        alerts: makeUrl("/api/v1/alerts"),
-        users : makeUrl("/api/v1/users")
+        login          : makeUrl("/login"),
+        logout         : makeUrl("/logout"),
+        alerts         : makeUrl("/api/v1/alerts"),
+        users          : makeUrl("/api/v1/users"),
+        passwordRemind : makeUrl("/password/remind"),
+        passwordReset  : makeUrl("/password/reset")
     };
 
     function makeUrl(url) {

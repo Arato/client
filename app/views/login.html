@@ -14,9 +14,13 @@
                                placeholder="email"
                                ng-model="email" required>
                     </div>
-                    <password ng-model="password" label="Mot de passe" name="password"
-                              placeholder="Mot de passe" required></password>
-                    <a href="#/password/remind">Mot de passe oublié ?</a>
+                    <div class="form-group" show-errors>
+                        <a href="#/password/remind" class="pull-right">Mot de passe oublié ?</a>
+                        <label for="password">Mot de passe</label>
+                        <password ng-model="password" label="Mot de passe" name="password"
+                                  placeholder="Mot de passe" required></password>
+
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <button type="submit" class="btn btn-success"

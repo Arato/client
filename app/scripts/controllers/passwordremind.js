@@ -10,11 +10,38 @@
 angular.module('aratoappApp')
     .controller('PasswordRemindCtrl', PasswordRemindCtrl);
 
-PasswordRemindCtrl.$inject = ['$scope'];
-function PasswordRemindCtrl($scope) {
-    $scope.awesomeThings = [
-        'HTML5 Boilerplate',
-        'AngularJS',
-        'Karma'
-    ];
+PasswordRemindCtrl.$inject = ['$scope', 'PasswordService', '$location'];
+function PasswordRemindCtrl($scope, PasswordService, $location) {
+
+    activate();
+    $scope.remind = remind;
+
+    function activate() {
+        $scope.loading = false;
+        $scope.error = false;
+    }
+
+    function remind() {
+        $scope.loading = true;
+        $scope.error = false;
+
+        PasswordService.remind($scope.email)
+            .then(successCallback)
+            .catch(errorCallback)
+            .finally(finallyFn);
+
+        function successCallback() {
+            $location.path("/password/reset");
+        }
+
+        function errorCallback(error) {
+            $scope.error = true;
+            $scope.errorMessage = error.message;
+            throw new Error(error.message);
+        }
+
+        function finallyFn() {
+            $scope.loading = false;
+        }
+    }
 }

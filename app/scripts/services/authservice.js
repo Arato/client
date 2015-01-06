@@ -14,10 +14,10 @@ AuthService.$inject = ['$q', '$http', 'RouteService', '$rootScope', '$cookieStor
 function AuthService($q, $http, RouteService, $rootScope, $cookieStore, Base64) {
 
     var service = {
-        login           : login,
-        logout          : logout,
-        clearCredentials: clearCredentials,
-        signup          : signup
+        login            : login,
+        logout           : logout,
+        clearCredentials : clearCredentials,
+        signup           : signup
     };
 
     return service;
@@ -26,8 +26,8 @@ function AuthService($q, $http, RouteService, $rootScope, $cookieStore, Base64) 
         var deferred = $q.defer();
 
         var credentials = {
-            email   : email,
-            password: password
+            email    : email,
+            password : password
         };
 
         $http.post(RouteService.login, credentials)
@@ -67,9 +67,9 @@ function AuthService($q, $http, RouteService, $rootScope, $cookieStore, Base64) 
     function setCredentials(credentials, user) {
         var authData = Base64.encode(credentials.email + ':' + credentials.password);
         $rootScope.authUser = {
-            id      : user.id,
-            email   : user.email,
-            authData: authData
+            id       : user.id,
+            email    : user.email,
+            authData : authData
         };
 
         $http.defaults.headers.common['Authorization'] = 'Basic ' + authData;
@@ -86,9 +86,9 @@ function AuthService($q, $http, RouteService, $rootScope, $cookieStore, Base64) 
         var deferred = $q.defer();
 
         var user = {
-            email                : email,
-            password             : password,
-            password_confirmation: password_confirmation
+            email                 : email,
+            password              : password,
+            password_confirmation : password_confirmation
         };
 
         $http.post(RouteService.users, user)

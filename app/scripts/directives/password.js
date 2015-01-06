@@ -19,7 +19,6 @@ function password() {
         scope      : {
             ngModel    : '=ngModel',
             placeholder: '@?',
-            label      : '@?',
             name       : '@'
         }
     };
