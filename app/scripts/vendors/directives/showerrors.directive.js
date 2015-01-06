@@ -28,51 +28,58 @@
             linkFn = function (scope, el, attrs, formCtrl) {
                 var blurred, inputEl, inputName, inputNgEl, options, showSuccess, toggleClasses, trigger;
                 blurred = false;
-                options = scope.$eval(attrs.showErrors);
-                showSuccess = getShowSuccess(options);
-                trigger = getTrigger(options);
-                inputEl = el[0].querySelector('.form-control[name]');
-                inputNgEl = angular.element(inputEl);
-                scope.$watch('name', function () {
-                    inputName = $interpolate(inputNgEl.prop('name') || '')(scope);
-                    inputNgEl.bind(trigger, function () {
-                        blurred = true;
+                $timeout(function () {
+                    "use strict";
+
+                    options = scope.$eval(attrs.showErrors);
+                    showSuccess = getShowSuccess(options);
+                    trigger = getTrigger(options);
+                    inputEl = el[0].querySelector('.form-control[name]');
+                    inputNgEl = angular.element(inputEl);
+                    scope.$watch('name', function () {
+                        inputName = $interpolate(inputNgEl.prop('name') || '')(scope);
+
+
+                        inputNgEl.bind(trigger, function () {
+                            blurred = true;
+                            return toggleClasses(formCtrl[inputName].$invalid);
+                        });
+                        scope.$watch(function () {
+                            return formCtrl[inputName] && formCtrl[inputName].$invalid;
+                        }, function (invalid) {
+                            if (!blurred) {
+                                return;
+                            }
+                            return toggleClasses(invalid);
+                        });
+                    });
+//                    if (!inputName) {
+//                        throw "show-errors element has no child input elements with a 'name' attribute and a 'form-control' class";
+//                    }
+
+                    scope.$on('show-errors-check-validity', function () {
                         return toggleClasses(formCtrl[inputName].$invalid);
                     });
-                    scope.$watch(function () {
-                        return formCtrl[inputName] && formCtrl[inputName].$invalid;
-                    }, function (invalid) {
-                        if (!blurred) {
-                            return;
-                        }
-                        return toggleClasses(invalid);
+                    scope.$on('show-errors-reset', function () {
+                        return $timeout(function () {
+                            el.removeClass('has-error');
+                            el.removeClass('has-success');
+                            return blurred = false;
+                        }, 0, false);
                     });
-                });
-//                if (!inputName) {
-//                    throw "show-errors element has no child input elements with a 'name' attribute and a 'form-control' class";
-//                }
+                    return toggleClasses = function (invalid) {
+                        el.toggleClass('has-error', invalid);
+                        if (showSuccess) {
+                            return el.toggleClass('has-success', !invalid);
+                        }
+                    };
+                }, 200);
 
-                scope.$on('show-errors-check-validity', function () {
-                    return toggleClasses(formCtrl[inputName].$invalid);
-                });
-                scope.$on('show-errors-reset', function () {
-                    return $timeout(function () {
-                        el.removeClass('has-error');
-                        el.removeClass('has-success');
-                        return blurred = false;
-                    }, 0, false);
-                });
-                return toggleClasses = function (invalid) {
-                    el.toggleClass('has-error', invalid);
-                    if (showSuccess) {
-                        return el.toggleClass('has-success', !invalid);
-                    }
-                };
             };
             return {
-                restrict: 'A',
-                require : '^form',
-                compile : function (elem, attrs) {
+                restrict : 'A',
+                require  : '^form',
+                compile  : function (elem, attrs) {
                     if (!elem.hasClass('form-group')) {
                         throw "show-errors element does not have the 'form-group' class";
                     }
@@ -94,8 +101,8 @@
         };
         this.$get = function () {
             return {
-                showSuccess: _showSuccess,
-                trigger    : _trigger
+                showSuccess : _showSuccess,
+                trigger     : _trigger
             };
         };
     });

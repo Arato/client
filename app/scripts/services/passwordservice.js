@@ -13,7 +13,8 @@ angular.module('aratoappApp')
 PasswordService.$inject = ['$q', '$http', 'RouteService',];
 function PasswordService($q, $http, RouteService) {
     var service = {
-        remind : remind
+        remind : remind,
+        reset  : reset
     };
     return service;
 
@@ -22,6 +23,30 @@ function PasswordService($q, $http, RouteService) {
 
         $http.post(RouteService.passwordRemind, {
             email : email
+        })
+            .success(successCallback)
+            .error(errorCallback);
+
+        function successCallback(result) {
+            deferred.resolve(result);
+        }
+
+        function errorCallback(response) {
+            deferred.reject(response.error);
+        }
+
+        return deferred.promise;
+    }
+
+
+    function reset(email, password, password_confirmation, token) {
+        var deferred = $q.defer();
+
+        $http.post(RouteService.passwordReset, {
+            email                 : email,
+            password              : password,
+            password_confirmation : password_confirmation,
+            token                 : token
         })
             .success(successCallback)
             .error(errorCallback);
