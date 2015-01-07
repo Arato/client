@@ -16,13 +16,13 @@
                                       ng-model="user.password"
                                       to-confirm="user.password_confirmation"
                                       placeholder="Confirmation mot de passe"></confirm-password>
-                </div>
-                <div class="panel-footer">
-                    <button type="submit" class="btn btn-success"
-                            ng-disabled="userForm.$invalid || loading"
-                            ladda="loading" data-style="zoom-out">
-                        Mettre à jour les informations
-                    </button>
+                    <div class="form-group" style="margin-bottom: 0">
+                        <button type="submit" class="btn btn-success btn-embossed"
+                                ng-disabled="userForm.$invalid || loading"
+                                ladda="loading" data-style="zoom-out">
+                            Mettre à jour les informations
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>

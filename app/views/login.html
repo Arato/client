@@ -21,20 +21,21 @@
                                   placeholder="Mot de passe" required></password>
 
                     </div>
-                </div>
-                <div class="panel-footer">
-                    <button type="submit" class="btn btn-success"
-                            ng-disabled="loginForm.$invalid || loading"
-                            ladda="loading" data-style="zoom-out">
-                        Se connecter
-                    </button>
+
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <button type="submit" class="btn btn-success btn-embossed"
+                                ng-disabled="loginForm.$invalid || loading"
+                                ladda="loading" data-style="zoom-out">
+                            Se connecter
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
 
         <p class="text-center">
             ou <br/><br/>
-            <a href="#/signup" class="btn btn-primary">Créer un compte</a>
+            <a href="#/signup" class="btn btn-primary btn-embossed">Créer un compte</a>
         </p>
 
     </div>
