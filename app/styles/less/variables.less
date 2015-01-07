@@ -442,7 +442,7 @@
 @pagination-border:                    transparent;
 
 @pagination-hover-color:               @link-hover-color;
-@pagination-hover-bg:                  @gray-lighter;
+@pagination-hover-bg:                  @gray-light;
 @pagination-hover-border:              @pagination-border;
 
 @pagination-active-color:              #fff;
@@ -450,8 +450,8 @@
 @pagination-active-border:             @brand-primary;
 
 @pagination-disabled-color:            @gray;
-@pagination-disabled-bg:               @gray-light;
-@pagination-disabled-border:           @pagination-border;
+@pagination-disabled-bg:               lighten(@gray-light, 3%);
+@pagination-disabled-border:           @pagination-disabled-bg;
 
 
 //== Pager

@@ -16,7 +16,7 @@
 <div class="row">
     <div class="col-sm-4">
         <div class="list-group">
-            <a href="" ng-repeat="alert in alerts"
+            <a href="" ng-repeat="alert in alerts | orderBy : '-id'"
                class="list-group-item"
                ng-class="{ 'list-group-success' : alert.id > seqNumber,
                'list-group-default' : alert.id <= seqNumber,

@@ -71,6 +71,7 @@ function AlertsCtrl($scope, AlertService) {
         editAlert();
     }
 
+    // TODO copy activeAlert to update it
     function editAlert() {
         $scope.editable = true;
     }
@@ -88,6 +89,8 @@ function AlertsCtrl($scope, AlertService) {
             .catch(errorCallback);
 
         function successCallback() {
+            $scope.alerts.remove(alert);
+            $scope.activeAlert = undefined;
         }
 
         function errorCallback(error) {
@@ -107,7 +110,18 @@ function AlertsCtrl($scope, AlertService) {
             .finally(finallyFn);
 
         function successCallback(result) {
-            $scope.alert = result.alerts;
+            var savedAlert = result.alerts;
+            var alert = $scope.alerts.find(function (a) {
+                return a.id === result.alerts.id;
+            });
+            // TODO update the right value
+            if (alert) {
+                alert = savedAlert;
+            }
+            else {
+                $scope.alerts.push(savedAlert);
+            }
+            $scope.activeAlert = savedAlert;
             $scope.editable = false;
         }
 
