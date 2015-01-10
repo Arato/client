@@ -28,6 +28,32 @@
     }
 }
 
+.form-control-validation-pb(@border-color, @background-color) {
+    .form-control {
+        background-color : @background-color;
+        border-color     : @border-color;
+        border-top-color : darken(@border-color, 6%);
+
+        &:hover {
+            background-color : darken(@background-color, 3%);
+            border-color     : darken(@border-color, 3%);
+            border-top-color : darken(@border-color, 6%);
+        }
+
+        &:focus {
+            background-color   : darken(@background-color, 6%);
+            border-color       : darken(@border-color, 6%);
+            border-top-color   : darken(@border-color, 12%);
+            -webkit-box-shadow : none;
+            box-shadow         : none;
+        }
+    }
+}
+
+.has-error {
+    .form-control-validation-pb(@state-danger-border, @state-danger-bg);
+}
+
 .form-group {
     margin-bottom : 30px;
 }
@@ -128,6 +154,7 @@ label {
         position   : absolute;
         top        : 0;
         right      : 0;
+        bottom     : 0;
         background : transparent;
         border     : transparent;
         color      : @input-color;

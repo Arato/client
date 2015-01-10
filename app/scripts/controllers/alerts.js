@@ -50,6 +50,8 @@ function AlertsCtrl($scope, AlertService) {
             $scope.alerts = results.alerts;
             $scope.pagination = results.paginate;
 
+            showAlert($scope.alerts[0]);
+
             localStorage.setItem('seqNumber', $scope.alerts.map('id').max());
         }
 
@@ -71,9 +73,9 @@ function AlertsCtrl($scope, AlertService) {
         editAlert();
     }
 
-    // TODO copy activeAlert to update it
     function editAlert() {
         $scope.editable = true;
+        $scope.activeAlert = angular.copy($scope.activeAlert);
     }
 
     function cancelAlert() {
@@ -99,6 +101,7 @@ function AlertsCtrl($scope, AlertService) {
     }
 
     function saveAlert(alert) {
+        console.log($scope.activeAlert, alert);
         $scope.loading = true;
         $scope.error = false;
 
@@ -111,12 +114,14 @@ function AlertsCtrl($scope, AlertService) {
 
         function successCallback(result) {
             var savedAlert = result.alerts;
-            var alert = $scope.alerts.find(function (a) {
+            var index = $scope.alerts.findIndex(function (a) {
                 return a.id === result.alerts.id;
             });
-            // TODO update the right value
-            if (alert) {
-                alert = savedAlert;
+
+            if (index !== undefined) {
+                console.log("index", index);
+
+                $scope.alerts[index] = savedAlert;
             }
             else {
                 $scope.alerts.push(savedAlert);
