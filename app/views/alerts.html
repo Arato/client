@@ -31,25 +31,6 @@
                 <p class="list-group-item-text">{{alert.content}}</p>
             </a>
         </div>
-
-        <!--<div class="panel-footer clearfix">-->
-        <!--<ul class="pull-left list-inline">-->
-        <!--<li></li>-->
-        <!--</ul>-->
-        <!--<ul class="pull-right list-inline">-->
-        <!--<li>-->
-        <!--<a ng-href="#/alerts/{{alert.id}}" tooltip="Modifier l'alerte" tooltip-append-to-body="true">-->
-        <!--<i class="glyphicon glyphicon-pencil"></i>-->
-        <!--</a>-->
-        <!--</li>-->
-        <!--<li ng-if="alert.user_id === authUser.id">-->
-        <!--<a href="" ng-click="deleteAlert(alert.id)" tooltip="Supprimer l'alerte"-->
-        <!--tooltip-append-to-body="true">-->
-        <!--<i class="glyphicon glyphicon-trash"></i>-->
-        <!--</a>-->
-        <!--</li>-->
-        <!--</ul>-->
-        <!--</div>-->
     </div>
     <div class="col-sm-8" ng-show="activeAlert">
         <div class="panel panel-default" ng-if="!editable">
@@ -64,13 +45,11 @@
 
                 <p>{{activeAlert.content}}</p>
             </div>
-            <div class="panel-footer">
-                <button class="btn btn-primary btn-embossed" ng-click="editAlert()"
-                        ng-if="activeAlert.user_id === authUser.id">
+            <div class="panel-footer" ng-if="activeAlert.user_id === authUser.id">
+                <button class="btn btn-primary btn-embossed" ng-click="editAlert()">
                     Editer
                 </button>
-                <button class="btn btn-danger btn-embossed" ng-click="deleteAlert(activeAlert)"
-                        ng-if="activeAlert.user_id === authUser.id">
+                <button class="btn btn-danger btn-embossed" ng-click="deleteAlert(activeAlert)">
                     Supprimer
                 </button>
             </div>

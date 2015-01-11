@@ -51,11 +51,17 @@ function ProfileCtrl($scope, $rootScope, ProfileService, $location) {
 
         function errorCallback(error) {
             $scope.error = true;
-            throw new Error(error.reason.error.message);
+            var messages = Object.keys(error.message)
+                .map(function (key) {
+                    return error.message[key];
+                })
+                .flatten();
+            $scope.errorMessage = messages;
+            throw new Error(messages);
         }
+    }
 
-        function finallyFn() {
-            $scope.loading = false;
-        }
+    function finallyFn() {
+        $scope.loading = false;
     }
 }
