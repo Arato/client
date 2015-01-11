@@ -171,7 +171,14 @@ module.exports = function (grunt) {
         wiredep       : {
             app : {
                 src        : ['<%= yeoman.app %>/index.html'],
-                ignorePath : /\.\.\//
+                ignorePath : /\.\.\//,
+                options    : {
+                    overrides : {
+                        'ladda' : {
+                            main : ["./dist/ladda.min.js", "./dist/ladda-themeless.min.css"]
+                        }
+                    }
+                }
             }
         },
 
