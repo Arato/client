@@ -67,9 +67,10 @@ function AuthService($q, $http, RouteService, $rootScope, $cookieStore, Base64) 
     function setCredentials(credentials, user) {
         var authData = Base64.encode(credentials.email + ':' + credentials.password);
         $rootScope.authUser = {
-            id       : user.id,
-            email    : user.email,
-            authData : authData
+            id              : user.id,
+            email           : user.email,
+            sequence_number : user.sequence_number,
+            authData        : authData
         };
 
         $http.defaults.headers.common['Authorization'] = 'Basic ' + authData;

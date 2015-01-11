@@ -18,10 +18,9 @@
         <div class="list-group">
             <a href="" ng-repeat="alert in alerts | orderBy : '-id'"
                class="list-group-item"
-               ng-class="{ 'list-group-success' : alert.id > seqNumber,
-               'list-group-default' : alert.id <= seqNumber,
-               'active' : activeAlert.id === alert.id}"
+               ng-class="{'active' : activeAlert.id === alert.id}"
                ng-click="showAlert(alert)">
+                <span class="pull-right label label-primary" ng-if="alert.id > seqNumber">nouveau</span>
                 <h4 class="list-group-item-heading">{{alert.title}}</h4>
 
                 <p>Par {{alert.user_id | toReadableUser}}</p>

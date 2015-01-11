@@ -10,8 +10,8 @@
 angular.module('aratoappApp')
     .controller('AlertsCtrl', AlertsCtrl);
 
-AlertsCtrl.$inject = ['$scope', 'AlertService'];
-function AlertsCtrl($scope, AlertService) {
+AlertsCtrl.$inject = ['$scope', '$rootScope', 'AlertService', 'ProfileService', '$cookieStore'];
+function AlertsCtrl($scope, $rootScope, AlertService, ProfileService, $cookieStore) {
     window.scope = $scope;
 
     $scope.pagination = {
@@ -33,8 +33,7 @@ function AlertsCtrl($scope, AlertService) {
     $scope.saveAlert = saveAlert;
 
     function activate() {
-        $scope.seqNumber = localStorage.getItem('seqNumber') ?
-                           JSON.parse(localStorage.getItem('seqNumber')) : 0;
+        $scope.seqNumber = $rootScope.authUser.sequence_number;
     }
 
     function updateAlerts() {
@@ -52,16 +51,28 @@ function AlertsCtrl($scope, AlertService) {
 
             showAlert($scope.alerts[0]);
 
-            localStorage.setItem('seqNumber', $scope.alerts.map('id').max());
-        }
-
-        function catchCallback(error) {
-            throw new Error(error);
+            var lastId = results.alerts.map('id').max();
+            var data = {
+                sequence_number : lastId
+            };
+            ProfileService.save($rootScope.authUser.id, data)
+                .then(function (user) {
+                    updateSequenceNumber(user.sequence_number);
+                });
         }
     }
 
+    function catchCallback(error) {
+        throw new Error(error);
+    }
+
+
     function showAlert(alert) {
         $scope.activeAlert = alert;
+
+        if (alert.id > $rootScope.authUser.sequence_number) {
+            $scope.seqNumber = alert.id;
+        }
     }
 
     function addAlert() {
@@ -101,7 +112,6 @@ function AlertsCtrl($scope, AlertService) {
     }
 
     function saveAlert(alert) {
-        console.log($scope.activeAlert, alert);
         $scope.loading = true;
         $scope.error = false;
 
@@ -138,5 +148,10 @@ function AlertsCtrl($scope, AlertService) {
         function finallyFn() {
             $scope.loading = false;
         }
+    }
+
+    function updateSequenceNumber(seqNumber) {
+        $rootScope.authUser.sequence_number = seqNumber;
+        $cookieStore.put('authUser', $rootScope.authUser);
     }
 }
