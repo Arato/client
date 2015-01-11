@@ -33,7 +33,6 @@ function ProfileCtrl($scope, $rootScope, ProfileService, $location) {
         }
     }
 
-
     function save() {
         $scope.loading = true;
         $scope.error = false;

@@ -8,17 +8,7 @@
  * Controller of the aratoappApp
  */
 angular.module('aratoappApp')
-    .controller('SignupCtrl', function ($scope) {
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
-    });
-
-angular.module('aratoappApp')
     .controller('SignupCtrl', SignupCtrl);
-
 
 SignupCtrl.$inject = ['$scope', 'AuthService', '$location', 'UserService'];
 function SignupCtrl($scope, AuthService, $location, UserService) {
@@ -53,7 +43,13 @@ function SignupCtrl($scope, AuthService, $location, UserService) {
 
         function errorCallback(error) {
             $scope.error = true;
-            throw new Error(error.message);
+            var messages = Object.keys(error.message)
+                .map(function (key) {
+                    return error.message[key];
+                })
+                .flatten();
+            $scope.errorMessage = messages;
+            throw new Error(messages);
         }
 
         function finallyFn() {
