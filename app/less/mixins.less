@@ -1,0 +1,48 @@
+.form-control-validation-pb(@border-color, @background-color) {
+    .form-control {
+        background-color : @background-color;
+        border-color     : @border-color;
+        border-top-color : darken(@border-color, 6%);
+
+        &:hover {
+            background-color : darken(@background-color, 3%);
+            border-color     : darken(@border-color, 3%);
+            border-top-color : darken(@border-color, 6%);
+        }
+
+        &:focus {
+            background-color   : darken(@background-color, 6%);
+            border-color       : darken(@border-color, 6%);
+            border-top-color   : darken(@border-color, 12%);
+            -webkit-box-shadow : none;
+            box-shadow         : none;
+        }
+    }
+}
+
+.btn-embossed-variant(@bg-color) {
+    @box-shadow-color : darken(@bg-color, 15%);
+    -webkit-box-shadow : 0 5px @box-shadow-color;
+    box-shadow         : 0 5px @box-shadow-color;
+
+    &:hover,
+    &:focus,
+    &.active,
+    &:active {
+        background   : @bg-color;
+        border-color : @bg-color;
+    }
+
+    &:hover,
+    &:focus {
+        -webkit-box-shadow : 0 3px @box-shadow-color;
+        box-shadow         : 0 3px @box-shadow-color;
+    }
+    &.active,
+    &:active {
+        -webkit-box-shadow : 0 0 @box-shadow-color;
+        box-shadow         : 0 0 @box-shadow-color;
+        top                : 5px;
+        outline            : none;
+    }
+}

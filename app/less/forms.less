@@ -1,0 +1,35 @@
+.form-group {
+    margin-bottom : 30px;
+}
+
+label {
+    text-transform : uppercase;
+    font-size      : 12px;
+    letter-spacing : 0.5px;
+}
+
+.form-control {
+    border-top-color   : #dfe5e8;
+    -webkit-box-shadow : none;
+    box-shadow         : none;
+    -webkit-transition : background-color .25s linear;
+    transition         : background-color .25s linear;
+
+    &:hover {
+        background-color : darken(@input-bg, 3%);
+        border-color     : darken(@input-bg, 3%);
+        border-top-color : darken(#dfe5e8, 6%);
+    }
+
+    &:focus {
+        background-color   : darken(@input-bg, 6%);
+        border-color       : darken(@input-bg, 6%);
+        border-top-color   : darken(#dfe5e8, 12%);
+        -webkit-box-shadow : none;
+        box-shadow         : none;
+    }
+}
+
+.has-error {
+    .form-control-validation-pb(@state-danger-border, @state-danger-bg);
+}
