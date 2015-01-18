@@ -51,6 +51,7 @@ function AlertsCtrl($scope, $rootScope, AlertService, ProfileService, $cookieSto
     }
 
     function showAlert(alert) {
+        $location.search({});
         $location.path('alerts/' + alert.id);
     }
 

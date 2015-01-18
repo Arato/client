@@ -33,9 +33,13 @@ angular
                 templateUrl : 'views/signup.html',
                 controller  : 'SignupCtrl'
             })
-            .when('/profile', {
-                templateUrl : 'views/profile.html',
-                controller  : 'ProfileCtrl'
+            .when('/password/remind', {
+                templateUrl : 'views/password-remind.html',
+                controller  : 'PasswordRemindCtrl'
+            })
+            .when('/password/reset/:token', {
+                templateUrl : 'views/password-reset.html',
+                controller  : 'PasswordResetCtrl'
             })
             .when('/alerts', {
                 templateUrl : 'views/alerts.html',
@@ -72,13 +76,24 @@ angular
                     ]
                 }
             })
-            .when('/password/remind', {
-                templateUrl : 'views/password-remind.html',
-                controller  : 'PasswordRemindCtrl'
+            .when('/profile/account', {
+                templateUrl : 'views/profile.html',
+                controller  : 'ProfileCtrl'
             })
-            .when('/password/reset/:token', {
-                templateUrl : 'views/password-reset.html',
-                controller  : 'PasswordResetCtrl'
+            .when('/profile/my-alerts', {
+                templateUrl : 'views/myalerts.html',
+                controller  : 'AlertsCtrl',
+                resolve     : {
+                    alerts : [
+                        '$route', '$rootScope', 'AlertService', function ($route, $rootScope, AlertService) {
+                            console.log($rootScope.authUser.id);
+                            return AlertService.index({
+                                page   : $route.current.params.page,
+                                userId : $rootScope.authUser.id
+                            });
+                        }
+                    ]
+                }
             })
             .otherwise({
                 templateUrl : '404.html'
