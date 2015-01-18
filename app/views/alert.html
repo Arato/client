@@ -10,11 +10,11 @@
 
         <p>{{alert.content}}</p>
     </div>
-    <div class="panel-footer" ng-if="alert.user_id === authUser.id">
-        <button class="btn btn-primary btn-embossed" ng-click="editAlert()">
+    <div class="panel-footer clearfix" ng-if="alert.user_id === authUser.id">
+        <button class="btn btn-primary btn-embossed pull-left" ng-click="editAlert()">
             Editer
         </button>
-        <button class="btn btn-danger btn-embossed" ng-click="deleteAlert(alert)">
+        <button class="btn btn-danger btn-embossed pull-right" ng-click="deleteAlert(alert)">
             Supprimer
         </button>
     </div>
@@ -32,9 +32,9 @@
 
         <div class="panel-body">
             <div class="form-group">
-                <label for="title">Tithe</label>
+                <label for="title">Titre</label>
                 <input type="text" class="form-control" id="title" name="title"
-                       placeholder="tithe"
+                       placeholder="titre"
                        ng-model="alert.title"
                        required max-length-title/>
             </div>

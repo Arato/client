@@ -39,7 +39,16 @@ angular
             })
             .when('/alerts', {
                 templateUrl : 'views/alerts.html',
-                controller  : 'AlertsCtrl'
+                controller  : 'AlertsCtrl',
+                resolve     : {
+                    alerts : [
+                        '$route', 'AlertService', function ($route, AlertService) {
+                            return AlertService.index({
+                                page : $route.current.params.page
+                            });
+                        }
+                    ]
+                }
             })
             .when('/alerts/new', {
                 templateUrl : 'views/alert.html',

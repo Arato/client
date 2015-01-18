@@ -26,6 +26,12 @@ function AlertCtrl($scope, $routeParams, AlertService, $location, alert) {
 
     function activate() {
         $scope.alert = alert;
+        var id = $routeParams.alertId !== 'new'
+            ? $routeParams.alertId
+            : undefined;
+        if (!id) {
+            editAlert();
+        }
     }
 
     function editAlert() {

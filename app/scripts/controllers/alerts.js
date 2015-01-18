@@ -10,8 +10,8 @@
 angular.module('aratoappApp')
     .controller('AlertsCtrl', AlertsCtrl);
 
-AlertsCtrl.$inject = ['$scope', '$rootScope', 'AlertService', 'ProfileService', '$cookieStore', '$location'];
-function AlertsCtrl($scope, $rootScope, AlertService, ProfileService, $cookieStore, $location) {
+AlertsCtrl.$inject = ['$scope', '$rootScope', 'AlertService', 'ProfileService', '$cookieStore', '$location', 'alerts'];
+function AlertsCtrl($scope, $rootScope, AlertService, ProfileService, $cookieStore, $location, alerts) {
     window.scope = $scope;
 
     $scope.pagination = {
@@ -28,37 +28,27 @@ function AlertsCtrl($scope, $rootScope, AlertService, ProfileService, $cookieSto
     $scope.showAlert = showAlert;
 
     function activate() {
-        $scope.seqNumber = $rootScope.authUser.sequence_number;
-    }
+        $scope.alerts = alerts.data;
+        $scope.pagination = alerts.paginate;
 
-    function updateAlerts() {
-        var params = {
-            page : $scope.pagination.current_page
+        $scope.seqNumber = $rootScope.authUser.sequence_number;
+
+        var lastId = alerts.data.map('id').max();
+        var data = {
+            sequence_number : lastId
         };
 
-        AlertService.index(params)
-            .then(thenCallback)
-            .catch(catchCallback);
+        ProfileService.save($rootScope.authUser.id, data)
+            .then(function (user) {
+                updateSequenceNumber(user.sequence_number);
+            });
+    }
 
-        function thenCallback(results) {
-            $scope.alerts = results.alerts;
-            $scope.pagination = results.paginate;
-
-            var lastId = results.alerts.map('id').max();
-            var data = {
-                sequence_number : lastId
-            };
-            ProfileService.save($rootScope.authUser.id, data)
-                .then(function (user) {
-                    updateSequenceNumber(user.sequence_number);
-                });
+    function updateAlerts(newPage) {
+        if (newPage) {
+            $location.search('page', newPage);
         }
     }
-
-    function catchCallback(error) {
-        throw new Error(error);
-    }
-
 
     function showAlert(alert) {
         $location.path('alerts/' + alert.id);
