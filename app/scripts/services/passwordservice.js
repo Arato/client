@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name aratoappApp.PasswordService
+ * @name aratoApp.PasswordService
  * @description
  * # PasswordService
- * Service in the aratoappApp.
+ * Service in the aratoApp.
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .service('PasswordService', PasswordService);
 
 PasswordService.$inject = ['$q', '$http', 'RouteService',];

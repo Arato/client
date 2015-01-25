@@ -3,7 +3,7 @@
 describe('Controller: AlertCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('aratoappApp'));
+  beforeEach(module('aratoApp'));
 
   var AlertCtrl,
     scope;

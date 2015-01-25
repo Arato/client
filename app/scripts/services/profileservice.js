@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name aratoappApp.profile
+ * @name aratoApp.profile
  * @description
  * # profile
- * Service in the aratoappApp.
+ * Service in the aratoApp.
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .service('ProfileService', ProfileService);
 
 ProfileService.$inject = ['$http', '$q', 'RouteService'];

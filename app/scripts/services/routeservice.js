@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name aratoappApp.RouteService
+ * @name aratoApp.RouteService
  * @description
  * # RouteService
- * Service in the aratoappApp.
+ * Service in the aratoApp.
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .service('RouteService', RouteService);
 
 RouteService.$inject = [];

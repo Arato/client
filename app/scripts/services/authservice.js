@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name aratoappApp.AuthService
+ * @name aratoApp.AuthService
  * @description
  * # AuthService
- * Service in the aratoappApp.
+ * Service in the aratoApp.
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .service('AuthService', AuthService);
 
 AuthService.$inject = ['$q', '$http', 'RouteService', '$rootScope', '$cookieStore', 'Base64'];

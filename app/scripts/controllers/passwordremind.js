@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name aratoappApp.controller:PasswordremindCtrl
+ * @name aratoApp.controller:PasswordremindCtrl
  * @description
  * # PasswordremindCtrl
- * Controller of the aratoappApp
+ * Controller of the aratoApp
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .controller('PasswordRemindCtrl', PasswordRemindCtrl);
 
 PasswordRemindCtrl.$inject = ['$scope', 'PasswordService'];

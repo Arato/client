@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .directive('animate', animate);
 
 animate.$inject = ['$timeout'];

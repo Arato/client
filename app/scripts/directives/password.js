@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name aratoappApp.directive:password
+ * @name aratoApp.directive:password
  * @description
  * # password
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .directive('password', password);
 
 function password() {

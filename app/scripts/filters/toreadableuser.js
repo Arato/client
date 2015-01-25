@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc filter
- * @name aratoappApp.filter:toReadableUser
+ * @name aratoApp.filter:toReadableUser
  * @function
  * @description
  * # toReadableUser
- * Filter in the aratoappApp.
+ * Filter in the aratoApp.
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .filter('toReadableUser', toReadableUser);
 
 toReadableUser.$inject = ['UserService', '$rootScope'];

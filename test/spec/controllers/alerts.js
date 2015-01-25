@@ -3,7 +3,7 @@
 describe('Controller: AlertsCtrl', function () {
 
     // load the controller's module
-    beforeEach(module('aratoappApp'));
+    beforeEach(module('aratoApp'));
 
     var AlertsCtrl,
         scope;
@@ -19,6 +19,5 @@ describe('Controller: AlertsCtrl', function () {
     it('should get alerts', function () {
         expect(scope.pagination.total_count).toBe(0);
         expect(scope.pagination.current_page).toBe(1);
-
     });
 });

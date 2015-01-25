@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('aratoappApp')
+    .module('aratoApp')
     .run(run);
 
 run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];

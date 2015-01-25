@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name aratoappApp.controller:AlertsCtrl
+ * @name aratoApp.controller:AlertsCtrl
  * @description
  * # AlertsCtrl
- * Controller of the aratoappApp
+ * Controller of the aratoApp
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .controller('AlertsCtrl', AlertsCtrl);
 
 AlertsCtrl.$inject = ['$scope', '$rootScope', 'AlertService', 'ProfileService', '$cookieStore', '$location', 'alerts'];

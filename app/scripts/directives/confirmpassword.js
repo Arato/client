@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name aratoappApp.directive:confirmPassword
+ * @name aratoApp.directive:confirmPassword
  * @description
  * # confirmPassword
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .directive('confirmPassword', confirmPassword);
 
 function confirmPassword() {

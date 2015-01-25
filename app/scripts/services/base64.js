@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name aratoappApp.Base64
+ * @name aratoApp.Base64
  * @description
  * # Base64
- * Factory in the aratoappApp.
+ * Factory in the aratoApp.
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .factory('Base64', Base64);
 
 Base64.$inject = [];

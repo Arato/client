@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name aratoappApp.directive:maxLengthTitle
+ * @name aratoApp.directive:maxLengthTitle
  * @description
  * # maxLengthTitle
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .directive('maxLengthTitle', maxLengthTitle);
 
 maxLengthTitle.$inject = [];

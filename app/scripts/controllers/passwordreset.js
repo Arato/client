@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name aratoappApp.controller:PasswordresetCtrl
+ * @name aratoApp.controller:PasswordresetCtrl
  * @description
  * # PasswordresetCtrl
- * Controller of the aratoappApp
+ * Controller of the aratoApp
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .controller('PasswordResetCtrl', PasswordResetCtrl);
 
 PasswordResetCtrl.$inject = ['$scope', '$routeParams', 'PasswordService', 'AuthService', 'UserService', '$location'];

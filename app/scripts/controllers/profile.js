@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name aratoappApp.controller:ProfilectrlCtrl
+ * @name aratoApp.controller:ProfilectrlCtrl
  * @description
  * # ProfilectrlCtrl
- * Controller of the aratoappApp
+ * Controller of the aratoApp
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .controller('ProfileCtrl', ProfileCtrl);
 
 ProfileCtrl.$inject = ['$scope', '$rootScope', 'ProfileService', '$location'];

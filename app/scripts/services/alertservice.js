@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name aratoappApp.AlertService
+ * @name aratoApp.AlertService
  * @description
  * # AlertService
- * Service in the aratoappApp.
+ * Service in the aratoApp.
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .service('AlertService', AlertService);
 
 AlertService.$inject = ['$http', '$q', 'RouteService'];

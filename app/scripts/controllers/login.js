@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name aratoappApp.controller:LoginCtrl
+ * @name aratoApp.controller:LoginCtrl
  * @description
  * # LoginCtrl
- * Controller of the aratoappApp
+ * Controller of the aratoApp
  */
-angular.module('aratoappApp')
+angular.module('aratoApp')
     .controller('LoginCtrl', LoginCtrl);
 
 LoginCtrl.$inject = ['$scope', 'AuthService', '$location', 'UserService'];

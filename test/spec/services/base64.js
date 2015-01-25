@@ -3,7 +3,7 @@
 describe('Service: Base64', function () {
 
     // load the service's module
-    beforeEach(module('aratoappApp'));
+    beforeEach(module('aratoApp'));
 
     // instantiate service
     var Base64;

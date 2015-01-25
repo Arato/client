@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name aratoappApp
+ * @name aratoApp
  * @description
- * # aratoappApp
+ * # aratoApp
  *
  * Main module of the application.
  */
 angular
-    .module('aratoappApp', [
+    .module('aratoApp', [
         'ngAnimate',
         'ngCookies',
         'ngResource',
