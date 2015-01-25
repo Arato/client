@@ -14,9 +14,11 @@ describe('Controller: AlertsCtrl', function () {
         AlertsCtrl = $controller('AlertsCtrl', {
             $scope: scope
         });
+        scope.$digest();
     }));
 
     it('should get alerts', function () {
+        console.log(scope);
         expect(scope.pagination.total_count).toBe(0);
         expect(scope.pagination.current_page).toBe(1);
     });
