@@ -28,8 +28,8 @@ function run($rootScope, $location, $cookieStore, $http) {
             return !url.startsWith($location.path());
         });
 
-        if (isPublicUrl && !$rootScope.authUser.id) {
-            $location.path("/login");
-        }
+//        if (isPublicUrl && !$rootScope.authUser.id) {
+//            $location.path("/login");
+//        }
     }
 }

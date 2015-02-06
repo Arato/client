@@ -10,8 +10,8 @@
 angular.module('aratoApp')
     .controller('AlertsCtrl', AlertsCtrl);
 
-AlertsCtrl.$inject = ['$scope', '$rootScope', 'AlertService', 'ProfileService', '$cookieStore', '$location', 'alerts'];
-function AlertsCtrl($scope, $rootScope, AlertService, ProfileService, $cookieStore, $location, alerts) {
+AlertsCtrl.$inject = ['$scope', '$rootScope', 'ProfileService', '$cookieStore', '$location', 'alertResponse'];
+function AlertsCtrl($scope, $rootScope, ProfileService, $cookieStore, $location, alertResponse) {
     window.scope = $scope;
 
     $scope.pagination = {
@@ -28,20 +28,22 @@ function AlertsCtrl($scope, $rootScope, AlertService, ProfileService, $cookieSto
     $scope.showAlert = showAlert;
 
     function activate() {
-        $scope.alerts = alerts.data;
-        $scope.pagination = alerts.paginate;
+        $scope.alerts = alertResponse.alerts;
+        $scope.pagination = alertResponse.paginate;
 
-        $scope.seqNumber = $rootScope.authUser.sequence_number;
+        if ($rootScope.authUser.id) {
+            $scope.seqNumber = $rootScope.authUser.sequence_number;
 
-        var lastId = alerts.data.map('id').max();
-        var data = {
-            sequence_number : lastId
-        };
+            var lastId = alertResponse.alerts.map('id').max();
+            var data = {
+                sequence_number : lastId
+            };
 
-        ProfileService.save($rootScope.authUser.id, data)
-            .then(function (user) {
-                updateSequenceNumber(user.sequence_number);
-            });
+            ProfileService.save($rootScope.authUser.id, data)
+                .then(function (user) {
+                    updateSequenceNumber(user.sequence_number);
+                });
+        }
     }
 
     function updateAlerts(newPage) {

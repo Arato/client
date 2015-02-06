@@ -45,7 +45,7 @@ angular
                 templateUrl : 'views/alerts.html',
                 controller  : 'AlertsCtrl',
                 resolve     : {
-                    alerts : [
+                    alertResponse : [
                         '$route', 'AlertService', function ($route, AlertService) {
                             return AlertService.index({
                                 page : $route.current.params.page
