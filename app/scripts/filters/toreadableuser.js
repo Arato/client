@@ -11,18 +11,12 @@
 angular.module('aratoApp')
     .filter('toReadableUser', toReadableUser);
 
-toReadableUser.$inject = ['UserService', '$rootScope'];
+toReadableUser.$inject = ['$rootScope'];
 
-function toReadableUser(UserService, $rootScope) {
-    return function (id) {
-        var users = UserService.getUsers();
-
-        var user = users.find(function (u) {
-            return u.id === id;
-        });
-
+function toReadableUser($rootScope) {
+    return function (user) {
         if (!user) {
-            return id;
+            return null;
         }
         return user.id === $rootScope.authUser.id ? "moi" : user.email;
     };

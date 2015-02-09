@@ -5,16 +5,13 @@
 
 @media (min-width : 768px) {
     .sidebar {
-        position         : fixed;
-        top              : 0;
-        bottom           : 0;
-        left             : 0;
-        z-index          : 1000;
-        display          : block;
-        overflow-x       : hidden;
-        overflow-y       : auto; /* Scrollable contents if viewport is shorter than content. */
-        background-color : @gray-base;
-        border-right     : 1px solid #eee;
+        position   : fixed;
+        top        : 0;
+        bottom     : 0;
+        z-index    : 1000;
+        display    : block;
+        overflow-x : hidden;
+        overflow-y : auto; /* Scrollable contents if viewport is shorter than content. */
 
         > section {
             position : relative;
@@ -49,4 +46,16 @@
         overflow-x : hidden;
         overflow-y : auto; /* Scrollable contents if viewport is shorter than content. */
     }
+}
+
+.sidebar-menu {
+    left             : 0;
+    background-color : @gray-base;
+}
+
+.sidebar-filter {
+    left             : inherit;
+    top              : 51px;
+    padding-top      : 20px;
+    background-color : @gray-light;
 }

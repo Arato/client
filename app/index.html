@@ -52,38 +52,40 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <div class="sidebar col-md-2">
-        <div class="sidebar-brand">
-            <a href="#/alerts">Arato.</a>
-        </div>
-        <section>
-            <ul class="sidebar-nav">
-                <li ng-class="{'active' : location.path().startsWith('/alerts')}">
-                    <a href="#/alerts">Alerts</a>
-                </li>
-                <li ng-class="{'active' : location.path().startsWith('/users')}">
-                    <a href="#/alerts">Users</a>
-                </li>
-            </ul>
-
-            <div class="sidebar-profile text-center">
-                <div class="img-responsive">
-                    <img ng-src="" alt="" class="img-circle img-thumbnail"/>
-                </div>
-                <div ng-if="!authUser.email">
-                    <p><a ng-href="#/login">Login</a> - <a ng-href="#/signup">Create an
-                        account</a></p>
-                </div>
-                <div ng-if="authUser.email">
-                    <p>{{authUser.email}}</p>
-                </div>
+    <div class="row">
+        <div class="col-md-2 sidebar sidebar-menu">
+            <div class="sidebar-brand">
+                <a href="#/alerts">Arato.</a>
             </div>
-        </section>
+            <section>
+                <ul class="sidebar-nav">
+                    <li ng-class="{'active' : location.path().startsWith('/alerts')}">
+                        <a href="#/alerts">Alerts</a>
+                    </li>
+                    <li ng-class="{'active' : location.path().startsWith('/users')}">
+                        <a href="#/alerts">Users</a>
+                    </li>
+                </ul>
 
-    </div>
-    <div class="content col-md-10 col-md-offset-2">
-        <!-- Add your site or application content here -->
-        <div ng-view=""></div>
+                <div class="sidebar-profile text-center">
+                    <div class="img-responsive">
+                        <img ng-src="" alt="" class="img-circle img-thumbnail"/>
+                    </div>
+                    <div ng-if="!authUser.email">
+                        <p><a ng-href="#/login">Login</a> - <a ng-href="#/signup">Create an
+                            account</a></p>
+                    </div>
+                    <div ng-if="authUser.email">
+                        <p>{{authUser.email}}</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <div class="content col-md-10 col-md-offset-2">
+            <!-- Add your site or application content here -->
+            <div ng-view=""></div>
+        </div>
     </div>
 </div>
 
