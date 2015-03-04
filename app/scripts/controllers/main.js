@@ -8,10 +8,13 @@
  * Controller of the aratoApp
  */
 angular.module('aratoApp')
-  .controller('MainCtrl', function ($scope) {
+    .controller('MainCtrl', MainCtrl);
+
+MainCtrl.$inject = ['$scope'];
+function MainCtrl($scope) {
     $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+        'HTML5 Boilerplate',
+        'AngularJS',
+        'Karma'
     ];
-  });
+}
