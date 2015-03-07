@@ -15,7 +15,9 @@ angular
         'ngResource',
         'ngRoute',
         'ngSanitize',
-        'ngTouch'
+        'ngTouch',
+        'ui.bootstrap',
+        'angular-ladda'
     ])
     .config(config);
 
@@ -23,14 +25,63 @@ config.$inject = ['$routeProvider'];
 function config($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl : 'views/main.html',
-            controller  : 'MainCtrl'
+            redirectTo : '/alerts'
         })
-        .when('/about', {
-            templateUrl : 'views/about.html',
-            controller  : 'AboutCtrl'
+        .when('/login', {
+            templateUrl : 'views/login.html',
+            controller  : 'LoginCtrl'
         })
+        .when('/signup', {
+            templateUrl : 'views/signup.html',
+            controller  : 'SignupCtrl'
+        })
+        .when('/password/remind', {
+            templateUrl : 'views/passwordremind.html',
+            controller  : 'PasswordRemindCtrl'
+        })
+        .when('/password/reset/:token', {
+            templateUrl : 'views/passwordreset.html',
+            controller  : 'PasswordResetCtrl'
+        })
+        .when('/alerts', {
+            templateUrl : 'views/alerts.html',
+            controller  : 'AlertsCtrl'
+        })
+        .when('/alerts/new', {
+            templateUrl : 'views/alert.html',
+            controller  : 'AlertCtrl',
+            resolve     : {
+                alert : [
+                    function () {
+                        return {};
+                    }
+                ]
+            }
+        })
+        .when('/profile', {
+            templateUrl : 'views/profile.html',
+            controller  : 'ProfileCtrl'
+        })
+//        .when('/profile/account', {
+//            templateUrl : 'views/profile.html',
+//            controller  : 'ProfileCtrl'
+//        })
+//        .when('/profile/my-alerts', {
+//            templateUrl : 'views/myalerts.html',
+//            controller  : 'AlertsCtrl',
+//            resolve     : {
+//                alerts : [
+//                    '$route', '$rootScope', 'AlertService', function ($route, $rootScope, AlertService) {
+//                        console.log($rootScope.authUser.id);
+//                        return AlertService.index({
+//                            page   : $route.current.params.page,
+//                            userId : $rootScope.authUser.id
+//                        });
+//                    }
+//                ]
+//            }
+//        })
         .otherwise({
-            redirectTo : '/'
+            templateUrl : '404.html'
         });
 }

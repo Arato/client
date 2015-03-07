@@ -1,0 +1,36 @@
+<div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-12">
+        <div class="pull-right">
+            <pagination total-items="pagination.total_count"
+                        ng-model="pagination.current_page"
+                        items-per-page="pagination.limit"
+                        ng-show="pagination.total_pages > 1"
+                        max-size="10"
+                        class="pagination-sm pagination-no-margin"></pagination>
+        </div>
+        <button ng-click="addAlert()" class="btn btn-success">
+            <i class="glyphicon glyphicon-plus"></i> Nouvelle alerte
+        </button>
+    </div>
+</div>
+
+<div class="panel"
+     ng-class="alert.user.id === authUser.id ? 'panel-info' : 'panel-default'"
+     ng-repeat="alert in alerts | orderBy: '-created_at'">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <span class="pull-right">{{alert.price | currency}}</span>
+            {{alert.title}}
+        </h2>
+        <span class="text-muted">par {{alert.user.email}}, le {{alert.created_at | date: 'dd/MM/yyyy HH:mm'}}</span>
+    </div>
+    <div class="panel-body">
+        <p>{{alert.content}}</p>
+
+        <div ng-if="alert.user.id === authUser.id">
+            <a href="" ng-click="editAlert(alert)">Editer</a>
+            -
+            <a href="" ng-click="deleteAlert(alert)">Supprimer</a>
+        </div>
+    </div>
+</div>
