@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: AlertsCtrl', function () {
+describe('Controller: PasswordremindCtrl', function () {
 
   // load the controller's module
   beforeEach(module('aratoApp'));
 
-  var AlertsCtrl,
+  var PasswordremindCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    AlertsCtrl = $controller('AlertsCtrl', {
+    PasswordremindCtrl = $controller('PasswordremindCtrl', {
       $scope: scope
     });
   }));

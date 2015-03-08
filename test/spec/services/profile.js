@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: auth', function () {
+describe('Service: profile', function () {
 
   // load the service's module
   beforeEach(module('aratoApp'));
 
   // instantiate service
-  var auth;
-  beforeEach(inject(function (_auth_) {
-    auth = _auth_;
+  var profile;
+  beforeEach(inject(function (_profile_) {
+    profile = _profile_;
   }));
 
   it('should do something', function () {
-    expect(!!auth).toBe(true);
+    expect(!!profile).toBe(true);
   });
 
 });
