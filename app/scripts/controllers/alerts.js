@@ -129,11 +129,11 @@ function AddAlertModalCtrl($scope, $modalInstance, alert, AlertService) {
     $scope.cancel = cancel;
 
     function activate() {
-        console.log(alert);
         $scope.alert = alert;
     }
 
     function ok() {
+        $scope.loading = true;
         AlertService.save($scope.alert.id, $scope.alert)
             .then(successCallback)
             .catch(errorCallback)

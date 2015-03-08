@@ -11,7 +11,7 @@ describe('Controller: PasswordresetCtrl', function () {
     // Initialize the controller and a mock scope
     beforeEach(inject(function ($controller, $rootScope) {
         scope = $rootScope.$new();
-        PasswordresetCtrl = $controller('PasswordresetCtrl', {
+        PasswordresetCtrl = $controller('PasswordResetCtrl', {
             $scope : scope
         });
     }));

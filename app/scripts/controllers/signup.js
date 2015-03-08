@@ -37,7 +37,6 @@ function SignupCtrl($scope, AuthService, $location, UserService) {
         }
 
         function successLoginCallback() {
-            UserService.fetchUsers();
             $location.path("/alerts");
         }
 
