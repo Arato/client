@@ -47,40 +47,10 @@ function config($routeProvider) {
             templateUrl : 'views/alerts.html',
             controller  : 'AlertsCtrl'
         })
-        .when('/alerts/new', {
-            templateUrl : 'views/alert.html',
-            controller  : 'AlertCtrl',
-            resolve     : {
-                alert : [
-                    function () {
-                        return {};
-                    }
-                ]
-            }
-        })
         .when('/profile', {
             templateUrl : 'views/profile.html',
             controller  : 'ProfileCtrl'
         })
-//        .when('/profile/account', {
-//            templateUrl : 'views/profile.html',
-//            controller  : 'ProfileCtrl'
-//        })
-//        .when('/profile/my-alerts', {
-//            templateUrl : 'views/myalerts.html',
-//            controller  : 'AlertsCtrl',
-//            resolve     : {
-//                alerts : [
-//                    '$route', '$rootScope', 'AlertService', function ($route, $rootScope, AlertService) {
-//                        console.log($rootScope.authUser.id);
-//                        return AlertService.index({
-//                            page   : $route.current.params.page,
-//                            userId : $rootScope.authUser.id
-//                        });
-//                    }
-//                ]
-//            }
-//        })
         .otherwise({
             templateUrl : '404.html'
         });

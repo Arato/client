@@ -1,11 +1,11 @@
+<alert type="danger" ng-show="errorMessage">
+    <ul style="margin-bottom: 0;">
+        <li ng-repeat="m in errorMessage">{{m}}</li>
+    </ul>
+</alert>
 <div class="row">
     <div class="col-sm-6">
         <form name="userForm" ng-submit="updateProfile()" animatecss="error">
-            <alert type="danger" ng-show="errorMessage">
-                <ul style="margin-bottom: 0;">
-                    <li ng-repeat="m in errorMessage">{{m}}</li>
-                </ul>
-            </alert>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Profil</h2>
@@ -29,11 +29,6 @@
 
     <div class="col-sm-6">
         <form name="passwordForm" ng-submit="updatePassword()" animatecss="error">
-            <alert type="danger" ng-show="errorMessage">
-                <ul style="margin-bottom: 0;">
-                    <li ng-repeat="m in errorMessage">{{m}}</li>
-                </ul>
-            </alert>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h2 class="panel-title">Mot de passe</h2>

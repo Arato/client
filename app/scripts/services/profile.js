@@ -53,11 +53,8 @@ function ProfileService($http, $q, RouteService) {
             deferred.resolve(result.users);
         }
 
-        function errorCallback(reason, status) {
-            deferred.reject({
-                reason: reason,
-                status: status
-            });
+        function errorCallback(reason) {
+            deferred.reject(reason.error);
         }
     }
 }

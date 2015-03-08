@@ -6,7 +6,7 @@ angular
 
 run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
 function run($rootScope, $location, $cookieStore, $http) {
-    var publicUrls = ['/login', '/signup', '/password/reset'];
+    var publicUrls = ['/login', '/signup', '/password'];
 
     activate();
     $rootScope.$on("$routeChangeStart", routeChangeStart);
@@ -24,11 +24,11 @@ function run($rootScope, $location, $cookieStore, $http) {
     function routeChangeStart() {
         $rootScope.authUser = $cookieStore.get('authUser') || {};
 
-        var isPublicUrl = publicUrls.none(function (url) {
-            return !url.startsWith($location.path());
+        var isPrivateUrl = publicUrls.none(function (url) {
+            return url.startsWith($location.path());
         });
 
-        if (isPublicUrl && !$rootScope.authUser.id) {
+        if (isPrivateUrl && !$rootScope.authUser.id) {
             $location.path("/login");
         }
     }
