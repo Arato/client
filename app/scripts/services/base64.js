@@ -15,11 +15,17 @@ function Base64() {
     var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
     var service = {
-        encode: encode,
-        decode: decode
+        encode            : encode,
+        encodeCredentials : encodeCredentials,
+        decode            : decode
     };
 
     return service;
+
+
+    function encodeCredentials(credentials) {
+        return encode(credentials.email + ":" + credentials.password);
+    }
 
     function encode(input) {
         var output = "";

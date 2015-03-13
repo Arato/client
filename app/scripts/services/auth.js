@@ -65,7 +65,7 @@ function AuthService($q, $http, RouteService, $rootScope, $cookieStore, Base64) 
     }
 
     function setCredentials(credentials, user) {
-        var authData = Base64.encode(credentials.email + ':' + credentials.password);
+        var authData = Base64.encodeCredentials(credentials);
         $rootScope.authUser = {
             id              : user.id,
             email           : user.email,
