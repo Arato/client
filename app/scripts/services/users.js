@@ -49,7 +49,7 @@ function UserService($http, $q, RouteService) {
         return deferred.promise;
 
         function successCallback(result) {
-            deferred.resolve(result.users);
+            deferred.resolve(result);
         }
 
         function errorCallback(error) {

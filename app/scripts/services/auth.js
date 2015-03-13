@@ -40,7 +40,7 @@ function AuthService($q, $http, RouteService, $rootScope, $cookieStore, Base64) 
         }
 
         function errorCallback(response) {
-            deferred.reject(response.error);
+            deferred.reject(response);
         }
 
         return deferred.promise;
@@ -101,7 +101,7 @@ function AuthService($q, $http, RouteService, $rootScope, $cookieStore, Base64) 
         }
 
         function errorCallback(response) {
-            deferred.reject(response.error);
+            deferred.reject(response);
         }
 
         return deferred.promise;

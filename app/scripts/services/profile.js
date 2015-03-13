@@ -13,8 +13,8 @@ angular.module('aratoApp')
 ProfileService.$inject = ['$http', '$q', 'RouteService'];
 function ProfileService($http, $q, RouteService) {
     var service = {
-        show: show,
-        save: save
+        show : show,
+        save : save
     };
     return service;
 
@@ -28,14 +28,11 @@ function ProfileService($http, $q, RouteService) {
         return deferred.promise;
 
         function successCallback(result) {
-            deferred.resolve(result.users);
+            deferred.resolve(result);
         }
 
-        function errorCallback(reason, status) {
-            deferred.reject({
-                reason: reason,
-                status: status
-            });
+        function errorCallback(reason) {
+            deferred.reject(reason);
         }
     }
 
@@ -50,11 +47,11 @@ function ProfileService($http, $q, RouteService) {
         return deferred.promise;
 
         function successCallback(result) {
-            deferred.resolve(result.users);
+            deferred.resolve(result);
         }
 
         function errorCallback(reason) {
-            deferred.reject(reason.error);
+            deferred.reject(reason);
         }
     }
 }

@@ -23,7 +23,7 @@ function ProfileCtrl($scope, $rootScope, ProfileService, $location) {
             .catch(errorCallback);
 
         function successCallback(result) {
-            $scope.user = result;
+            $scope.user = result.data;
         }
 
         function errorCallback(error) {

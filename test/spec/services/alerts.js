@@ -35,7 +35,7 @@ describe('Service: AlertService', function () {
         $httpBackend
             .whenGET(RouteService.alerts)
             .respond({
-                "alerts"   : [
+                "data"     : [
                     {
                         "id"         : 2,
                         "title"      : "My second title",
@@ -70,7 +70,7 @@ describe('Service: AlertService', function () {
 
         AlertService.index({})
             .then(function (result) {
-                alerts = result.alerts;
+                alerts = result.data;
                 paginate = result.paginate;
             });
         $rootScope.$apply();
@@ -98,7 +98,7 @@ describe('Service: AlertService', function () {
         $httpBackend
             .whenGET(RouteService.alerts + "/2")
             .respond(200, {
-                "alerts" : {
+                "data" : {
                     "id"         : 2,
                     "title"      : "My second title",
                     "price"      : 10,
@@ -113,7 +113,7 @@ describe('Service: AlertService', function () {
 
         AlertService.show(2)
             .then(function (result) {
-                alert = result;
+                alert = result.data;
             });
         $rootScope.$apply();
         $httpBackend.flush();
@@ -152,9 +152,11 @@ describe('Service: AlertService', function () {
         $httpBackend
             .whenPOST(RouteService.alerts)
             .respond(201, {
-                "id"    : 3,
-                "title" : "My title",
-                "price" : 10
+                "data" : {
+                    "id"    : 3,
+                    "title" : "My title",
+                    "price" : 10
+                }
             });
 
         var data = {
@@ -165,7 +167,7 @@ describe('Service: AlertService', function () {
         var alert = {};
         AlertService.save(undefined, data)
             .then(function (result) {
-                alert = result;
+                alert = result.data;
             });
 
         $rootScope.$apply();
@@ -240,16 +242,18 @@ describe('Service: AlertService', function () {
         $httpBackend
             .whenPUT(RouteService.alerts + "/1")
             .respond(201, {
-                "id"         : 1,
-                "title"      : "My new title",
-                "price"      : 20,
-                "content"    : "Hello",
-                "user"       : {
-                    "id"    : 2,
-                    "email" : "email2@example.com"
-                },
-                "created_at" : "2015-01-07T22:44:17+0000",
-                "updated_at" : "2015-01-25T12:25:22+0000"
+                "data" : {
+                    "id"         : 1,
+                    "title"      : "My new title",
+                    "price"      : 20,
+                    "content"    : "Hello",
+                    "user"       : {
+                        "id"    : 2,
+                        "email" : "email2@example.com"
+                    },
+                    "created_at" : "2015-01-07T22:44:17+0000",
+                    "updated_at" : "2015-01-25T12:25:22+0000"
+                }
             });
 
         var data = {
@@ -260,7 +264,7 @@ describe('Service: AlertService', function () {
         var alert = {};
         AlertService.save(1, data)
             .then(function (result) {
-                alert = result;
+                alert = result.data;
             });
 
         $rootScope.$apply();

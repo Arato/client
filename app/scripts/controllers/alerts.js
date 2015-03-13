@@ -43,7 +43,7 @@ function AlertsCtrl($scope, AlertService, $modal) {
 
         AlertService.index(params)
             .then(function (response) {
-                $scope.alerts = response.alerts;
+                $scope.alerts = response.data;
                 $scope.pagination = response.paginate;
             });
     }
