@@ -11,7 +11,7 @@ angular.module('aratoApp')
 
 function confirmPassword() {
     var directive = {
-        templateUrl: 'scripts/directives/confirmpassword/confirmpassword.html',
+        templateUrl: 'views/directives/confirmpassword.html',
         require    : 'ngModel',
         restrict   : 'E',
         link       : postLink,

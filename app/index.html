@@ -25,7 +25,7 @@
 
 <!-- Add your site or application content here -->
 <div class="container">
-    <nav class="navbar navbar-inverse navbar-fixed-top" ng-if="authUser.email"  ng-cloak>
+    <nav class="navbar navbar-inverse navbar-fixed-top" ng-if="authUser.email" ng-cloak>
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -93,8 +93,6 @@
 <![endif]-->
 <!-- endbuild -->
 
-<script src="vendors/sugarjs-1.4.1.min.js"></script>
-
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -111,6 +109,7 @@
 <script src="bower_components/spin.js/spin.js"></script>
 <script src="bower_components/ladda/dist/ladda.min.js"></script>
 <script src="bower_components/angular-ladda/dist/angular-ladda.min.js"></script>
+<script src="bower_components/sugar/release/sugar.min.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -131,8 +130,8 @@
 <script src="scripts/controllers/passwordreset.js"></script>
 <script src="scripts/controllers/signup.js"></script>
 <script src="scripts/directives/password/password.js"></script>
-<script src="scripts/directives/confirmpassword/confirmpassword.js"></script>
-<script src="scripts/directives/animatecss/animatecss.js"></script>
+<script src="scripts/directives/confirmpassword.js"></script>
+<script src="scripts/directives/animatecss.js"></script>
 <!-- endbuild -->
 </body>
 </html>

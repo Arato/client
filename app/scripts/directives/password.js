@@ -12,7 +12,7 @@ angular.module('aratoApp')
 function password() {
     var directive = {
         require     : 'ngModel',
-        templateUrl : 'scripts/directives/password/password.html',
+        templateUrl : 'views/directives/password.html',
         restrict    : 'E',
         link        : postLink,
         replace     : true,
