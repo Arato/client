@@ -32,7 +32,7 @@ function PasswordService($q, $http, RouteService) {
         }
 
         function errorCallback(response) {
-            deferred.reject(response.error);
+            deferred.reject(response);
         }
 
         return deferred.promise;
@@ -56,7 +56,7 @@ function PasswordService($q, $http, RouteService) {
         }
 
         function errorCallback(response) {
-            deferred.reject(response.error);
+            deferred.reject(response);
         }
 
         return deferred.promise;
