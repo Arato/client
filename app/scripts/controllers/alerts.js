@@ -18,12 +18,11 @@ function AlertsCtrl($scope, AlertService, $modal) {
         title   : "",
         price   : 0,
         content : ""
-    }
+    };
 
     activate();
 
     $scope.$watch('pagination.current_page', updateAlerts);
-
 
     $scope.addAlert = addAlert;
     $scope.editAlert = editAlert;
@@ -70,7 +69,6 @@ function AlertsCtrl($scope, AlertService, $modal) {
         modalInstance.result.then(successCallback, errorCallback);
 
         function successCallback(alert) {
-            console.log(alert);
             var alertIndex = $scope.alerts.findIndex(function (a) {
                 return a.id === alert.id;
             });
@@ -140,7 +138,7 @@ function AddAlertModalCtrl($scope, $modalInstance, alert, AlertService) {
             .finally(finallyFn);
 
         function successCallback(result) {
-            $modalInstance.close(result.alerts);
+            $modalInstance.close(result.data);
         }
 
         function errorCallback(error) {
@@ -151,12 +149,12 @@ function AddAlertModalCtrl($scope, $modalInstance, alert, AlertService) {
         function finallyFn() {
             $scope.loading = false;
         }
-    };
+    }
 
     function cancel() {
         $scope.alert = $scope.alert.$old;
 
         delete['$scope.alert.$old'];
         $modalInstance.dismiss('cancel');
-    };
+    }
 }

@@ -29,7 +29,7 @@ function animatecss($timeout) {
 
         }
 
-        scope.$watch('animate', function (newValue) {
+        scope.$watch('animatecss', function (newValue) {
             if (newValue) {
                 launchAnimation();
             }

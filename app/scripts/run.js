@@ -24,10 +24,12 @@ function run($rootScope, $location, $cookieStore, $http) {
     function routeChangeStart() {
         $rootScope.authUser = $cookieStore.get('authUser') || {};
 
+        var path = $location.path();
         var isPrivateUrl = publicUrls.none(function (url) {
-            return url.startsWith($location.path());
+            return path.startsWith(url);
         });
 
+        console.log("isPrivateUrl", isPrivateUrl);
         if (isPrivateUrl && !$rootScope.authUser.id) {
             $location.path("/login");
         }
