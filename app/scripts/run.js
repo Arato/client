@@ -29,7 +29,6 @@ function run($rootScope, $location, $cookieStore, $http) {
             return path.startsWith(url);
         });
 
-        console.log("isPrivateUrl", isPrivateUrl);
         if (isPrivateUrl && !$rootScope.authUser.id) {
             $location.path("/login");
         }

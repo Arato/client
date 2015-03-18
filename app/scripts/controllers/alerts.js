@@ -20,6 +20,29 @@ function AlertsCtrl($scope, AlertService, $modal) {
         content : ""
     };
 
+    var socket = io.connect("https://arato-push.herokuapp.com");
+
+    socket.on('alert.created', function (response) {
+        console.log('alert.created', response);
+        $scope.$apply(function () {
+            addOrUpdate(response.data);
+        });
+    });
+    socket.on('alert.updated', function (response) {
+        console.log('alert.updated', response);
+        $scope.$apply(function () {
+            addOrUpdate(response.data);
+        });
+    });
+
+    socket.on('alert.deleted', function (response) {
+        console.log('alert.deleted', response);
+        $scope.$apply(function () {
+            $scope.alerts.remove(function (a) {
+                return a.id === response.data.id;
+            });
+        });
+    });
     activate();
 
     $scope.$watch('pagination.current_page', updateAlerts);
@@ -69,20 +92,24 @@ function AlertsCtrl($scope, AlertService, $modal) {
         modalInstance.result.then(successCallback, errorCallback);
 
         function successCallback(alert) {
-            var alertIndex = $scope.alerts.findIndex(function (a) {
-                return a.id === alert.id;
-            });
-
-            if (alertIndex >= 0) {
-                $scope.alerts[alertIndex] = alert;
-            }
-            else {
-                $scope.alerts.push(alert);
-            }
+            addOrUpdate(alert);
         }
 
         function errorCallback() {
             console.info('Modal dismissed at: ' + new Date());
+        }
+    }
+
+    function addOrUpdate(alert) {
+        var alertIndex = $scope.alerts.findIndex(function (a) {
+            return a.id === alert.id;
+        });
+
+        if (alertIndex >= 0) {
+            $scope.alerts[alertIndex] = alert;
+        }
+        else {
+            $scope.alerts.push(alert);
         }
     }
 
