@@ -6,33 +6,29 @@
     </alert>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h2 class="panel-title">Nouveau compte</h2>
+            <h2 class="panel-title">New account</h2>
         </div>
         <div class="panel-body">
-            <div class="form-group" show-errors>
-                <label for="email">Adresse email</label>
+            <div class="form-group">
+                <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" name="email"
                        placeholder="email"
                        ng-model="email" required>
             </div>
-            <confirm-password label="Confirmation mot de passe"
-                              id="password_confirmation"
-                              name="password_confirmation"
-                              ng-model="password"
-                              to-confirm="password_confirmation"
-                              placeholder="Confirmation mot de passe"></confirm-password>
+            <confirm-password ng-model="password"
+                              to-confirm="password_confirmation"></confirm-password>
         </div>
         <div class="panel-footer">
             <button type="submit" class="btn btn-success"
                     ng-disabled="signupForm.$invalid || loading"
                     ladda="loading" data-style="zoom-out">
-                Créer un nouveau compte
+                Create a new account
             </button>
         </div>
     </div>
 </form>
 
 <p class="text-center">
-    ou <br/><br/>
-    <a href="#/login" class="btn btn-primary btn-embossed">Se connecter</a>
+    or <br/><br/>
+    <a href="#/login" class="btn btn-primary btn-embossed">login</a>
 </p>

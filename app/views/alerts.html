@@ -9,7 +9,7 @@
                         class="pagination-sm pagination-no-margin"></pagination>
         </div>
         <button ng-click="addAlert()" class="btn btn-success">
-            <i class="glyphicon glyphicon-plus"></i> Nouvelle alerte
+            <i class="glyphicon glyphicon-plus"></i> new alert
         </button>
     </div>
 </div>
@@ -22,15 +22,15 @@
             <span class="pull-right">{{alert.price | currency}}</span>
             {{alert.title}}
         </h2>
-        <span class="text-muted">par {{alert.user.email}}, le {{alert.created_at | date: 'dd/MM/yyyy HH:mm'}}</span>
+        <span class="text-muted">by {{alert.user.email}}, {{alert.created_at | date: 'dd/MM/yyyy HH:mm'}}</span>
     </div>
     <div class="panel-body">
         <p>{{alert.content}}</p>
 
         <div ng-if="alert.user.id === authUser.id">
-            <a href="" ng-click="editAlert(alert)">Editer</a>
+            <a href="" ng-click="editAlert(alert)">Edit</a>
             -
-            <a href="" ng-click="deleteAlert(alert)">Supprimer</a>
+            <a href="" ng-click="deleteAlert(alert)">Delete</a>
         </div>
     </div>
 </div>

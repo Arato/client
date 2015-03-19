@@ -8,18 +8,18 @@
         <form name="userForm" ng-submit="updateProfile()" animatecss="error">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2 class="panel-title">Profil</h2>
+                    <h2 class="panel-title">Profile</h2>
                 </div>
                 <div class="panel-body">
                     <div class="form-group" show-errors>
-                        <label for="email" class="control-label">Adresse email</label>
+                        <label for="email" class="control-label">Email</label>
                         <input type="email" class="form-control" id="email" name="email" ng-model="user.email">
                     </div>
                     <div class="form-group" style="margin-bottom: 0">
                         <button type="submit" class="btn btn-success"
                                 ng-disabled="userForm.$invalid || loadingProfile"
                                 ladda="loadingProfile" data-style="zoom-out">
-                            Enregistrer
+                            Update
                         </button>
                     </div>
                 </div>
@@ -31,26 +31,22 @@
         <form name="passwordForm" ng-submit="updatePassword()" animatecss="error">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h2 class="panel-title">Mot de passe</h2>
+                    <h2 class="panel-title">Password</h2>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label for="password_old">Ancien mot de passe</label>
+                        <label for="password_old">Old password</label>
                         <password ng-model="user.password_old" name="password_old"
-                                  placeholder="Ancien mot de passe" required></password>
+                                  placeholder="Old password" required></password>
                     </div>
 
-                    <confirm-password label="Confirmation mot de passe"
-                                      id="password_confirmation"
-                                      name="password_confirmation"
-                                      ng-model="user.password"
-                                      to-confirm="user.password_confirmation"
-                                      placeholder="Confirmation mot de passe"></confirm-password>
+                    <confirm-password ng-model="password"
+                                      to-confirm="password_confirmation"></confirm-password>
                     <div class="form-group" style="margin-bottom: 0">
                         <button type="submit" class="btn btn-success"
                                 ng-disabled="passwordForm.$invalid || loadingPassword"
                                 ladda="loadingPassword" data-style="zoom-out">
-                            Enregistrer
+                            Update
                         </button>
                     </div>
                 </div>

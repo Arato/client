@@ -24,6 +24,9 @@ function AlertsCtrl($scope, AlertService, $modal) {
 
     socket.on('alert.created', function (response) {
         console.log('alert.created', response);
+
+        // todo : only add if you are on the first page.
+        // todo : check with the pagination limit
         $scope.$apply(function () {
             addOrUpdate(response.data);
         });
@@ -115,11 +118,11 @@ function AlertsCtrl($scope, AlertService, $modal) {
 
     function deleteAlert(alert) {
         bootbox.dialog({
-            title   : "Suppression de l'alerte",
-            message : "Etes vous sûr de vouloir supprimer l'alerte <strong>" + alert.title + "</strong> ?",
+            title   : "Alert removal",
+            message : "Are you sure to delete <strong>" + alert.title + "</strong> ?",
             buttons : {
                 success : {
-                    label     : "Oui, supprimer",
+                    label     : "Yes, delete",
                     className : "btn-danger",
                     callback  : function () {
                         AlertService.delete(alert.id)
@@ -138,7 +141,7 @@ function AlertsCtrl($scope, AlertService, $modal) {
                     }
                 },
                 danger  : {
-                    label     : "Non, annuler",
+                    label     : "No, cancel",
                     className : "btn-default"
                 }
             }

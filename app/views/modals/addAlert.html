@@ -1,25 +1,25 @@
 <form name="alertForm" role="form" animatecss="error">
     <div class="modal-header">
-        <h3 class="modal-title">{{alert.id ? "Editer l'alerte" : "Nouvelle alerte"}}</h3>
+        <h3 class="modal-title">{{alert.id ? "Update alerte" : "New alert"}}</h3>
     </div>
     <div class="modal-body">
-        <alert type="danger" ng-show="error">Veuillez corriger vos erreurs</alert>
+        <alert type="danger" ng-show="error">Please correct your errors</alert>
 
         <div class="form-group">
-            <label for="title">Titre</label>
+            <label for="title">Title</label>
             <input type="text" class="form-control" id="title" name="title"
-                   placeholder="titre"
+                   placeholder="Title"
                    ng-model="alert.title"
                    required/>
         </div>
         <div class="form-group">
-            <label for="price">Prix</label>
-            <input type="number" class="form-control" id="price" placeholder="prix"
+            <label for="price">Price</label>
+            <input type="number" class="form-control" id="price" placeholder="Price"
                    ng-model="alert.price" min="0" required>
         </div>
         <div class="form-group">
-            <label for="content">Contenu</label>
-                <textarea class="form-control" id="content" name="content" placeholder="content"
+            <label for="content">Content</label>
+                <textarea class="form-control" id="content" name="content" placeholder="Add a description of your alert (Optional)"
                           ng-model="alert.content" rows="6"></textarea>
         </div>
     </div>
@@ -27,11 +27,11 @@
         <button type="button" class="btn btn-success"
                 ng-disabled="alertForm.$invalid || loading" ng-click="ok()"
                 ladda="loading" data-style="zoom-out">
-            Enregistrer
+            Save
         </button>
         <button type="button" ng-click="cancel()"
                 class="btn btn-default">
-            Annuler
+            Cancel
         </button>
     </div>
 </form>
