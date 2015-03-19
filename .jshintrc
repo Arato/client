@@ -35,6 +35,7 @@
     "it": false,
     "jasmine": false,
     "spyOn": false,
-    "bootbox": false
+    "bootbox": false,
+    "io": false
   }
 }

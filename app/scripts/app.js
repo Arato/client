@@ -17,7 +17,8 @@ angular
         'ngSanitize',
         'ngTouch',
         'ui.bootstrap',
-        'angular-ladda'
+        'angular-ladda',
+        'config'
     ])
     .config(config);
 

@@ -10,11 +10,8 @@
 angular.module('aratoApp')
     .service('RouteService', RouteService);
 
-RouteService.$inject = [];
-function RouteService() {
-    //var baseUrl = "https://arato-api.herokuapp.com";
-    var baseUrl = "http://arato.local:8000";
-
+RouteService.$inject = ['ENV'];
+function RouteService(ENV) {
     return {
         login          : makeUrl("/login"),
         logout         : makeUrl("/logout"),
@@ -25,6 +22,6 @@ function RouteService() {
     };
 
     function makeUrl(url) {
-        return baseUrl + url;
+        return ENV.apiEndpoint + url;
     }
 }

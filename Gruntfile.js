@@ -357,9 +357,43 @@ module.exports = function (grunt) {
             }
         },
 
-        bower      : {
+        bower : {
             install : {
                 //just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
+            }
+        },
+
+        ngconstant : {
+            // Options for all targets
+            options     : {
+                space : '  ',
+                wrap  : '"use strict";\n\n {%= __ngModule %}',
+                name  : 'config'
+            },
+            // Environment targets
+            development : {
+                options   : {
+                    dest : '<%= yeoman.app %>/scripts/config.js'
+                },
+                constants : {
+                    ENV : {
+                        name        : 'development',
+                        apiEndpoint : 'http://arato.local:8000',
+                        nodePush    : 'http://127.0.0.1:5000'
+                    }
+                }
+            },
+            production  : {
+                options   : {
+                    dest : '<%= yeoman.dist %>/scripts/config.js'
+                },
+                constants : {
+                    ENV : {
+                        name        : 'production',
+                        apiEndpoint : 'https://arato-api.herokuapp.com',
+                        nodePush    : 'https://arato-push.herokuapp.com'
+                    }
+                }
             }
         }
     });
@@ -372,6 +406,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
+            'ngconstant:development',
             'wiredep',
             'concurrent:server',
             'autoprefixer',
@@ -395,6 +430,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'ngconstant:production',
         'wiredep',
         'useminPrepare',
         'concurrent:dist',

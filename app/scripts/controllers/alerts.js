@@ -11,8 +11,8 @@ angular.module('aratoApp')
     .controller('AlertsCtrl', AlertsCtrl)
     .controller('AddAlertModalCtrl', AddAlertModalCtrl);
 
-AlertsCtrl.$inject = ['$scope', 'AlertService', '$modal'];
-function AlertsCtrl($scope, AlertService, $modal) {
+AlertsCtrl.$inject = ['$scope', 'AlertService', '$modal', 'ENV'];
+function AlertsCtrl($scope, AlertService, $modal, ENV) {
     var DEFAULT_ALERT = {
         id      : undefined,
         title   : "",
@@ -20,7 +20,7 @@ function AlertsCtrl($scope, AlertService, $modal) {
         content : ""
     };
 
-    var socket = io.connect("https://arato-push.herokuapp.com");
+    var socket = io.connect(ENV.nodePush);
 
     socket.on('alert.created', function (response) {
         console.log('alert.created', response);
