@@ -368,7 +368,7 @@ module.exports = function (grunt) {
             options     : {
                 space : '  ',
                 wrap  : '"use strict";\n\n {%= __ngModule %}',
-                name  : 'config'
+                name  : 'aratoApp'
             },
             // Environment targets
             development : {
@@ -377,7 +377,6 @@ module.exports = function (grunt) {
                 },
                 constants : {
                     ENV : {
-                        name        : 'development',
                         apiEndpoint : 'http://arato.local:8000',
                         nodePush    : 'http://127.0.0.1:5000'
                     }
@@ -389,7 +388,6 @@ module.exports = function (grunt) {
                 },
                 constants : {
                     ENV : {
-                        name        : 'production',
                         apiEndpoint : 'https://arato-api.herokuapp.com',
                         nodePush    : 'https://arato-push.herokuapp.com'
                     }
