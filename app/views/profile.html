@@ -40,8 +40,8 @@
                                   placeholder="Old password" required></password>
                     </div>
 
-                    <confirm-password ng-model="password"
-                                      to-confirm="password_confirmation"></confirm-password>
+                    <confirm-password ng-model="user.password"
+                                      to-confirm="user.password_confirmation"></confirm-password>
                     <div class="form-group" style="margin-bottom: 0">
                         <button type="submit" class="btn btn-success"
                                 ng-disabled="passwordForm.$invalid || loadingPassword"
