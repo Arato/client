@@ -17,6 +17,7 @@ function RouteService(ENV) {
         logout         : makeUrl("/logout"),
         alerts         : makeUrl("/api/v1/alerts"),
         users          : makeUrl("/api/v1/users"),
+        notifications  : makeUrl("/api/v1/notifications"),
         passwordRemind : makeUrl("/password/remind"),
         passwordReset  : makeUrl("/password/reset")
     };

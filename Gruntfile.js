@@ -367,8 +367,8 @@ module.exports = function (grunt) {
             // Options for all targets
             options     : {
                 space : '  ',
-                wrap  : '"use strict";\n\n {%= __ngModule %}',
-                name  : 'aratoApp'
+                name  : 'config',
+                dest  : '.tmp/scripts/config.js'
             },
             // Environment targets
             development : {

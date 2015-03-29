@@ -10,8 +10,8 @@
 angular.module('aratoApp')
     .service('ProfileService', ProfileService);
 
-ProfileService.$inject = ['$http', '$q', 'RouteService'];
-function ProfileService($http, $q, RouteService) {
+ProfileService.$inject = ['UserService'];
+function ProfileService(UserService) {
     var service = {
         show : show,
         save : save
@@ -19,39 +19,10 @@ function ProfileService($http, $q, RouteService) {
     return service;
 
     function show(id) {
-        var deferred = $q.defer();
-
-        $http.get(RouteService.users + '/' + id)
-            .success(successCallback)
-            .error(errorCallback);
-
-        return deferred.promise;
-
-        function successCallback(result) {
-            deferred.resolve(result);
-        }
-
-        function errorCallback(reason) {
-            deferred.reject(reason);
-        }
+        return UserService.show(id);
     }
 
-
     function save(id, data) {
-        var deferred = $q.defer();
-
-        $http.put(RouteService.users + '/' + id, data)
-            .success(successCallback)
-            .error(errorCallback);
-
-        return deferred.promise;
-
-        function successCallback(result) {
-            deferred.resolve(result);
-        }
-
-        function errorCallback(reason) {
-            deferred.reject(reason);
-        }
+        return UserService.save(id, data);
     }
 }

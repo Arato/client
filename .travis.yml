@@ -2,5 +2,7 @@ language: node_js
 node_js:
   - '0.10'
 before_script:
-  - 'npm install -g bower grunt-cli'
+  - 'npm install -g bower grunt-cli codeclimate-test-reporter'
   - 'bower install --force-latest'
+after_script:
+  - CODECLIMATE_REPO_TOKEN=fa69c99a2a5bdf4f7a75534a1e15cc1e63fbb9d8b86bc4793be1a7b08e135fc7 codeclimate < lcov.info
