@@ -1,45 +1,73 @@
-<div class="row" style="margin-bottom: 40px;">
+<aside class="filters">
     <div class="col-sm-12">
-        <div class="pull-right">
-            <pagination total-items="pagination.total_count"
-                        ng-model="pagination.current_page"
-                        items-per-page="pagination.limit"
-                        ng-show="pagination.total_pages > 1"
-                        max-size="10"
-                        class="pagination-sm pagination-no-margin"></pagination>
-        </div>
-        <button ng-click="addAlert()" class="btn btn-success">
+        <button ng-click="addAlert()" class="btn btn-block btn-success">
             <i class="glyphicon glyphicon-plus"></i> new alert
         </button>
     </div>
-</div>
-<div class="row" ng-if="alerts.length == 0">
-    <div class="col-sm-12">
-        <p class="text-center text-muted">
-            Alerts are loading. Wait a little.
-            <br/>
-        </p>
-    </div>
-</div>
-<div class=" row" ng-if="alerts.length">
-    <div class="col-sm-12">
-        <div class="panel"
-             ng-class="alert.user.id === authUser.id ? 'panel-info' : 'panel-default'"
-             ng-repeat="alert in alerts | orderBy: '-created_at'">
-            <div class="panel-heading">
-                <h2 class="panel-title">
-                    <span class="pull-right">{{alert.price | currency}}</span>
-                    #{{alert.id}} {{alert.title}}
-                </h2>
-                <span class="text-muted">by {{alert.user.email}}, {{alert.created_at | date: 'dd/MM/yyyy HH:mm'}}</span>
+    <div class="scrollable"></div>
+</aside>
+<aside class="lists">
+    <div class="clearfix">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <input type="search" class="form-control"/>
             </div>
-            <div class="panel-body">
-                <p>{{alert.content}}</p>
+        </div>
+    </div>
+    <div class="clearfix scrollable">
+        <div class="col-sm-12">
+            <p class=" text-center text-muted" ng-if="alerts.length == 0">
+                Alerts are loading. Wait a little.
+                <br/>
+            </p>
 
-                <div ng-if="alert.user.id === authUser.id">
-                    <a href="" ng-click="editAlert(alert)">Edit</a>
-                    -
-                    <a href="" ng-click="deleteAlert(alert)">Delete</a>
+            <div class="list-group">
+                <a class="list-group-item" ng-repeat="alert in alerts | orderBy: '-created_at'">
+                    <small class="pull-right">{{alert.price | currency}}</small>
+
+                    <h4 class="list-group-item-heading">#{{alert.id}} {{alert.title}}</h4>
+
+                    <p class="list-group-item-text"> {{alert.created_at | date:'dd/MM/yyyy HH:mm'}}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<!--<nav class="actionbar navbar navbar-default">-->
+<!--<div class="container-fluid">-->
+<!--<div class="navbar-left">-->
+<!--<
+<!--</div>-->
+<!--<div class="navbar-right">-->
+<!--&lt;!&ndash;<pagination total-items="pagination.total_count"&ndash;&gt;-->
+<!--&lt;!&ndash;ng-model="pagination.current_page"&ndash;&gt;-->
+<!--&lt;!&ndash;items-per-page="pagination.limit"&ndash;&gt;-->
+<!--&lt;!&ndash;ng-show="pagination.total_pages > 1"&ndash;&gt;-->
+<!--&lt;!&ndash;max-size="10"&ndash;&gt;-->
+<!--&lt;!&ndash;class="pagination-sm pagination-no-margin"></pagination>&ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
+<!--</nav>-->
+<div class="container scrollable">
+    <div class="row" ng-if="alerts.length">
+        <div class="col-sm-12">
+            <div class="panel"
+                 ng-class="alert.user.id === authUser.id ? 'panel-info' : 'panel-default'">
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        <span class="pull-right">{{alert.price | currency}}</span>
+                    </h2>
+                    <span class="text-muted">by {{alert.user.email}}, {{alert.created_at | date: 'dd/MM/yyyy HH:mm'}}</span>
+                </div>
+                <div class="panel-body">
+                    <p>{{alert.content}}</p>
+
+                    <div ng-if="alert.user.id === authUser.id">
+                        <a href="" ng-click="editAlert(alert)">Edit</a>
+                        -
+                        <a href="" ng-click="deleteAlert(alert)">Delete</a>
+                    </div>
                 </div>
             </div>
         </div>

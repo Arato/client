@@ -8,9 +8,9 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/ladda/dist/ladda-themeless.min.css" />
-    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/ladda/dist/ladda-themeless.min.css"/>
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css"/>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -22,85 +22,90 @@
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
+<!--<header>-->
+    <!--<nav class="navbar navbar-inverse navbar-static-top" ng-if="authUser.email" ng-cloak>-->
+        <!--<div class="container-fluid ">-->
+            <!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+            <!--<div class="navbar-header">-->
+                <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"-->
+                        <!--data-target="#bs-example-navbar-collapse-1">-->
+                    <!--<span class="sr-only">Toggle navigation</span>-->
+                    <!--<span class="icon-bar"></span>-->
+                    <!--<span class="icon-bar"></span>-->
+                    <!--<span class="icon-bar"></span>-->
+                <!--</button>-->
+                <!--<a class="navbar-brand" href="#/">Arato</a>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+            <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+                <!--<div class="navbar-left">-->
+                    <!--<ul class="nav navbar-nav">-->
+                        <!--<li ng-class="{active : location.path().startsWith('/alerts')}"><a ng-href="#/">Alerts</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="navbar-right">-->
+                    <!--<ul class="nav navbar-nav">-->
+                        <!--<li class="dropdown" ng-class="{active : location.path().startsWith('/profile')}">-->
+                            <!--<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"-->
+                               <!--aria-expanded="false">{{authUser.email}}-->
+                                <!--<span class="caret"></span></a>-->
+                            <!--<ul class="dropdown-menu" role="menu">-->
+                                <!--<li><a href="#/profile">My profile</a></li>-->
+                                <!--<li class="divider"></li>-->
+                                <!--<li><a href="#/login">Logout</a></li>-->
+                            <!--</ul>-->
+                        <!--</li>-->
+                    <!--</ul>-->
 
-<!-- Add your site or application content here -->
-<div class="container">
-    <nav class="navbar navbar-inverse navbar-fixed-top" ng-if="authUser.email" ng-cloak>
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#/">Arato</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li ng-class="{active : location.path().startsWith('/alerts')}"><a ng-href="#/">Alerts</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown" ng-class="{active : location.path().startsWith('/profile')}">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{authUser.email}}
-                            <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#/profile">My profile</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#/login">Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+                <!--</div>-->
+            <!--</div>-->
+            <!--&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+        <!--</div>-->
+    <!--</nav>-->
+<!--</header>-->
+<!--<main>-->
+    <!--<article ng-view="">-->
+    <!--</article>-->
+    <!--<aside class="notifications">-->
+        <!--<div class="scrollable" ng-controller="NotificationsCtrl" ng-if="authUser.email" ng-cloak>-->
+            <!--<div ng-if="notifications.length == 0">-->
+                <!--<p class="text-center text-muted">-->
+                    <!--Notifications are loading. Wait a little.-->
+                    <!--<br/>-->
+                <!--</p>-->
+            <!--</div>-->
+            <!--<div class="list-group" ng-if="notifications.length">-->
+                <!--<div class="list-group-item"-->
+                     <!--ng-repeat="notification in notifications | orderBy:'-created_at'"-->
+                     <!--ng-class="{'list-group-item-success' : notification.type == 'CREATION',-->
+                        <!--'list-group-item-info': notification.type =='UPDATE',-->
+                        <!--'list-group-item-danger' : notification.type == 'REMOVAL'}">-->
+                    <!--<h4 class="list-group-item-heading">{{notification.notifiable_type}}-->
+                        <!--#{{notification.notifiable_id}}</h4>-->
+                    <!--<small>{{notification.created_at | date:'dd/MM/yyyy HH:mm'}}</small>-->
 
-    <div class="row">
-        <div ng-class="authUser.email ? 'col-sm-8' : 'col-sm-12'">
-            <div ng-view=""></div>
-        </div>
-        <div class="col-sm-4" ng-controller="NotificationsCtrl" ng-if="authUser.email" ng-cloak>
-            <div ng-if="notifications.length == 0">
-                <p class="text-center text-muted">
-                    Notifications are loading. Wait a little.
-                    <br/>
-                </p>
-            </div>
-            <div class="list-group" ng-if="notifications.length">
-                <div class="list-group-item"
-                     ng-repeat="notification in notifications | orderBy:'-created_at'"
-                     ng-class="{'list-group-item-success' : notification.type == 'CREATION',
-                        'list-group-item-info': notification.type =='UPDATE',
-                        'list-group-item-danger' : notification.type == 'REMOVAL'}">
-                    <h4 class="list-group-item-heading">{{notification.notifiable_type}}
-                        #{{notification.notifiable_id}}</h4>
-                    <small>{{notification.created_at | date:'dd/MM/yyyy HH:mm'}}</small>
+                    <!--<div ng-if="notification.type =='CREATION'">-->
+                        <!--New alert-->
+                    <!--</div>-->
+                    <!--<div ng-if="notification.type =='UPDATE'">-->
+                        <!--<ul>-->
+                            <!--<li ng-repeat="entry in notification.entries">-->
+                                <!--{{entry.field}} : <s>{{entry.previousValue || "&oslash;"}}</s> -> {{entry.newValue}}-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                    <!--<div ng-if="notification.type =='REMOVAL'">-->
+                        <!--Alert deleted-->
+                    <!--</div>-->
 
-                    <div ng-if="notification.type =='CREATION'">
-                        New alert
-                    </div>
-                    <div ng-if="notification.type =='UPDATE'">
-                        <ul>
-                            <li ng-repeat="entry in notification.entries">
-                                {{entry.field}} : <s>{{entry.previousValue || "&oslash;"}}</s> -> {{entry.newValue}}
-                            </li>
-                        </ul>
-                    </div>
-                    <div ng-if="notification.type =='REMOVAL'">
-                        Alert deleted
-                    </div>
-
-                </div>
-            </div>
-            </ul>
-        </div>
-    </div>
-</div>
+                <!--</div>-->
+            <!--</div>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</aside>-->
+<!--</main>-->
+<!--<footer>-->
+<!--</footer>-->
 
 
 <!-- build:js(.) scripts/oldieshim.js -->
@@ -114,7 +119,6 @@
 <!-- bower:js -->
 <script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -122,11 +126,13 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
 <script src="bower_components/bootbox/bootbox.js"></script>
 <script src="bower_components/spin.js/spin.js"></script>
 <script src="bower_components/ladda/dist/ladda.min.js"></script>
 <script src="bower_components/angular-ladda/dist/angular-ladda.min.js"></script>
 <script src="bower_components/sugar/release/sugar.min.js"></script>
+<script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
