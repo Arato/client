@@ -170,8 +170,17 @@ module.exports = function (grunt) {
                 src        : ['<%= yeoman.app %>/index.html'],
                 ignorePath : /\.\.\//,
                 overrides  : {
-                    'ladda' : {
-                        main : ["./dist/ladda.min.js", "./dist/ladda-themeless.min.css"]
+                    'ladda'             : {
+                        main : [
+                            "./dist/ladda.min.js",
+                            "./dist/ladda-themeless.min.css"
+                        ]
+                    },
+                    'foundation-apps' : {
+                        main : [
+                            "./dist/js/foundation-apps.min.js",
+                            "./dist/js/foundation-apps-templates.min.js"
+                        ]
                     }
                 }
             },

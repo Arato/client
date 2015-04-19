@@ -23,89 +23,130 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 <!--<header>-->
-    <!--<nav class="navbar navbar-inverse navbar-static-top" ng-if="authUser.email" ng-cloak>-->
-        <!--<div class="container-fluid ">-->
-            <!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
-            <!--<div class="navbar-header">-->
-                <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"-->
-                        <!--data-target="#bs-example-navbar-collapse-1">-->
-                    <!--<span class="sr-only">Toggle navigation</span>-->
-                    <!--<span class="icon-bar"></span>-->
-                    <!--<span class="icon-bar"></span>-->
-                    <!--<span class="icon-bar"></span>-->
-                <!--</button>-->
-                <!--<a class="navbar-brand" href="#/">Arato</a>-->
-            <!--</div>-->
-            <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
-            <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
-                <!--<div class="navbar-left">-->
-                    <!--<ul class="nav navbar-nav">-->
-                        <!--<li ng-class="{active : location.path().startsWith('/alerts')}"><a ng-href="#/">Alerts</a></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-                <!--<div class="navbar-right">-->
-                    <!--<ul class="nav navbar-nav">-->
-                        <!--<li class="dropdown" ng-class="{active : location.path().startsWith('/profile')}">-->
-                            <!--<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"-->
-                               <!--aria-expanded="false">{{authUser.email}}-->
-                                <!--<span class="caret"></span></a>-->
-                            <!--<ul class="dropdown-menu" role="menu">-->
-                                <!--<li><a href="#/profile">My profile</a></li>-->
-                                <!--<li class="divider"></li>-->
-                                <!--<li><a href="#/login">Logout</a></li>-->
-                            <!--</ul>-->
-                        <!--</li>-->
-                    <!--</ul>-->
+<!--<nav class="navbar navbar-inverse navbar-static-top" ng-if="authUser.email" ng-cloak>-->
+<!--<div class="container-fluid ">-->
+<!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
+<!--<div class="navbar-header">-->
+<!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"-->
+<!--data-target="#bs-example-navbar-collapse-1">-->
+<!--<span class="sr-only">Toggle navigation</span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--<span class="icon-bar"></span>-->
+<!--</button>-->
+<!--<a class="navbar-brand" href="#/">Arato</a>-->
+<!--</div>-->
+<!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
+<!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+<!--<div class="navbar-left">-->
+<!--<ul class="nav navbar-nav">-->
+<!--<li ng-class="{active : location.path().startsWith('/alerts')}"><a ng-href="#/">Alerts</a></li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--<div class="navbar-right">-->
+<!--<ul class="nav navbar-nav">-->
+<!--<li class="dropdown" ng-class="{active : location.path().startsWith('/profile')}">-->
+<!--<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"-->
+<!--aria-expanded="false">{{authUser.email}}-->
+<!--<span class="caret"></span></a>-->
+<!--<ul class="dropdown-menu" role="menu">-->
+<!--<li><a href="#/profile">My profile</a></li>-->
+<!--<li class="divider"></li>-->
+<!--<li><a href="#/login">Logout</a></li>-->
+<!--</ul>-->
+<!--</li>-->
+<!--</ul>-->
 
-                <!--</div>-->
-            <!--</div>-->
-            <!--&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
-        <!--</div>-->
-    <!--</nav>-->
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
+<!--</div>-->
+<!--</nav>-->
 <!--</header>-->
 <!--<main>-->
-    <!--<article ng-view="">-->
-    <!--</article>-->
-    <!--<aside class="notifications">-->
-        <!--<div class="scrollable" ng-controller="NotificationsCtrl" ng-if="authUser.email" ng-cloak>-->
-            <!--<div ng-if="notifications.length == 0">-->
-                <!--<p class="text-center text-muted">-->
-                    <!--Notifications are loading. Wait a little.-->
-                    <!--<br/>-->
-                <!--</p>-->
-            <!--</div>-->
-            <!--<div class="list-group" ng-if="notifications.length">-->
-                <!--<div class="list-group-item"-->
-                     <!--ng-repeat="notification in notifications | orderBy:'-created_at'"-->
-                     <!--ng-class="{'list-group-item-success' : notification.type == 'CREATION',-->
-                        <!--'list-group-item-info': notification.type =='UPDATE',-->
-                        <!--'list-group-item-danger' : notification.type == 'REMOVAL'}">-->
-                    <!--<h4 class="list-group-item-heading">{{notification.notifiable_type}}-->
-                        <!--#{{notification.notifiable_id}}</h4>-->
-                    <!--<small>{{notification.created_at | date:'dd/MM/yyyy HH:mm'}}</small>-->
+<!--<article ng-view="">-->
+<!--</article>-->
+<!--<aside class="notifications">-->
+<!--<div class="scrollable" ng-controller="NotificationsCtrl" ng-if="authUser.email" ng-cloak>-->
+<!--<div ng-if="notifications.length == 0">-->
+<!--<p class="text-center text-muted">-->
+<!--Notifications are loading. Wait a little.-->
+<!--<br/>-->
+<!--</p>-->
+<!--</div>-->
+<!--<div class="list-group" ng-if="notifications.length">-->
+<!--<div class="list-group-item"-->
+<!--ng-repeat="notification in notifications | orderBy:'-created_at'"-->
+<!--ng-class="{'list-group-item-success' : notification.type == 'CREATION',-->
+<!--'list-group-item-info': notification.type =='UPDATE',-->
+<!--'list-group-item-danger' : notification.type == 'REMOVAL'}">-->
+<!--<h4 class="list-group-item-heading">{{notification.notifiable_type}}-->
+<!--#{{notification.notifiable_id}}</h4>-->
+<!--<small>{{notification.created_at | date:'dd/MM/yyyy HH:mm'}}</small>-->
 
-                    <!--<div ng-if="notification.type =='CREATION'">-->
-                        <!--New alert-->
-                    <!--</div>-->
-                    <!--<div ng-if="notification.type =='UPDATE'">-->
-                        <!--<ul>-->
-                            <!--<li ng-repeat="entry in notification.entries">-->
-                                <!--{{entry.field}} : <s>{{entry.previousValue || "&oslash;"}}</s> -> {{entry.newValue}}-->
-                            <!--</li>-->
-                        <!--</ul>-->
-                    <!--</div>-->
-                    <!--<div ng-if="notification.type =='REMOVAL'">-->
-                        <!--Alert deleted-->
-                    <!--</div>-->
+<!--<div ng-if="notification.type =='CREATION'">-->
+<!--New alert-->
+<!--</div>-->
+<!--<div ng-if="notification.type =='UPDATE'">-->
+<!--<ul>-->
+<!--<li ng-repeat="entry in notification.entries">-->
+<!--{{entry.field}} : <s>{{entry.previousValue || "&oslash;"}}</s> -> {{entry.newValue}}-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--<div ng-if="notification.type =='REMOVAL'">-->
+<!--Alert deleted-->
+<!--</div>-->
 
-                <!--</div>-->
-            <!--</div>-->
-            <!--</ul>-->
-        <!--</div>-->
-    <!--</aside>-->
+<!--</div>-->
+<!--</div>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</aside>-->
 <!--</main>-->
 <!--<footer>-->
 <!--</footer>-->
+
+<div class="grid-frame vertical" ng-cloak>
+    <div class="shrink grid-content collapse" ng-if="authUser.email">
+        <div class="menu-group dark">
+            <div class="menu-group-left">
+                <ul class="menu-bar primary">
+                    <li ng-class="{active : location.path().startsWith('/alerts')}"><a ui-sref="alerts">Alerts</a></li>
+                </ul>
+            </div>
+            <div class="menu-group-right">
+                <ul class="icon-left primary menu-bar">
+                    <li><a ui-sref="profile">{{authUser.email}}</a>
+                    </li>
+                    <li><a ui-sref="logout">
+                        <span class="fi-account-logout" title="account logout" aria-hidden="true"></span> Logout</a>
+                    </li>
+                    <li>
+                        <a href="#" zf-open="notificationPanel">
+                            <img zf-iconic="" icon="bell" size="medium">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="grid-block">
+        <div ng-class="['ui-animation' ]" ui-view class="grid-block"></div>
+
+        <zf-panel id="notificationPanel" position="right" ng-controller="NotificationsCtrl" ng-if="authUser.email">
+            <a href="#" zf-close class="close-button">&times;</a>
+            <section class="block-list">
+                <header>Notifications</header>
+                <ul>
+                    <li ng-repeat="notification in notifications | orderBy:'-created_at'"><a href="#">#{{notification.notifiable_id}}</a>
+                    </li>
+                </ul>
+            </section>
+        </zf-panel>
+    </div>
+
+</div>
 
 
 <!-- build:js(.) scripts/oldieshim.js -->
@@ -133,6 +174,14 @@
 <script src="bower_components/angular-ladda/dist/angular-ladda.min.js"></script>
 <script src="bower_components/sugar/release/sugar.min.js"></script>
 <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+<script src="bower_components/viewport-units-buggyfill/viewport-units-buggyfill.js"></script>
+<script src="bower_components/viewport-units-buggyfill/viewport-units-buggyfill.hacks.js"></script>
+<script src="bower_components/tether/tether.js"></script>
+<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/hammerjs/hammer.js"></script>
+<script src="bower_components/foundation-apps/dist/js/foundation-apps.min.js"></script>
+<script src="bower_components/foundation-apps/dist/js/foundation-apps-templates.min.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 

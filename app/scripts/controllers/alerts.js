@@ -27,12 +27,14 @@ function AlertsCtrl($scope, AlertService, $modal) {
     $scope.addAlert = addAlert;
     $scope.editAlert = editAlert;
     $scope.deleteAlert = deleteAlert;
+    $scope.setActiveAlert = setActiveAlert;
 
     function activate() {
         $scope.pagination = {
             total_count  : 0,
             current_page : 1
         };
+        $scope.activeAlert = undefined;
     }
 
     function updateAlerts() {
@@ -123,6 +125,10 @@ function AlertsCtrl($scope, AlertService, $modal) {
                 }
             }
         });
+    }
+
+    function setActiveAlert(alert) {
+        $scope.activeAlert = angular.copy(alert);
     }
 }
 

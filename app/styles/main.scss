@@ -1,7 +1,10 @@
 @import "compass";
-@import "variables";
-@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "theme";
+//@import "variables";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "theme";
+@import "global";
+@import "settings";
+@import "../../bower_components/foundation-apps/scss/foundation";
 
 /*
   Allow angular.js to be loaded in body, hiding cloaked elements until
@@ -12,6 +15,7 @@
     display : none !important;
 }
 
+/*
 body {
     //padding-top : 70px;
 }
@@ -73,3 +77,4 @@ body {
         opacity           : 1;
     }
 }
+*/
