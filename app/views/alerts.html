@@ -1,64 +1,47 @@
-<div zf-panel position="left" id="sidebarFilters" class="medium-grid-block collapse medium-3 large-2 vertical">
-    <div class="grid-content collapse shrink hide-for-medium">
-        <a href="" class="secondary button expand" zf-close>Close</a>
-    </div>
-    <div class="grid-content collapse shrink">
-        <button ng-click="addAlert()" class="button success expand">
+<div class="row" style="margin-bottom: 40px;">
+    <div class="col-sm-12">
+        <div class="pull-right">
+            <pagination total-items="pagination.total_count"
+                        ng-model="pagination.current_page"
+                        items-per-page="pagination.limit"
+                        ng-show="pagination.total_pages > 1"
+                        max-size="10"
+                        class="pagination-sm pagination-no-margin"></pagination>
+        </div>
+        <button ng-click="addAlert()" class="btn btn-success">
             <i class="glyphicon glyphicon-plus"></i> new alert
         </button>
     </div>
-    <div class="grid-content">
-
-    </div>
 </div>
-<div zf-panel position="left" id="sidebarList" class="medium-grid-block collapse medium-3 large-2 vertical">
-    <div class="grid-content collapse shrink hide-for-medium">
-        <a href="" class="secondary button expand" zf-close>Close</a>
-    </div>
-    <div class="grid-content collapse shrink">
-        <input type="search"/>
-
-    </div>
-    <div class="grid-content">
-        <p class=" text-center text-muted" ng-if="alerts.length == 0">
+<div class="row" ng-if="alerts.length == 0">
+    <div class="col-sm-12">
+        <p class="text-center text-muted">
             Alerts are loading. Wait a little.
             <br/>
         </p>
-
-        <section class="block-list">
-            <ul>
-                <li ng-repeat="alert in alerts | orderBy: '-created_at'">
-                    <a href="#" ng-click="setActiveAlert(alert)">
-                        <small class="pull-right">{{alert.price | currency}}</small>
-
-                        <h4>#{{alert.id}} {{alert.title}}</h4>
-
-                        <p>{{alert.created_at | date:'dd/MM/yyyy HH:mm'}}</p>
-                    </a>
-                </li>
-            </ul>
-        </section>
     </div>
 </div>
+<div class=" row" ng-if="alerts.length">
+    <div class="col-sm-12">
+        <div class="panel"
+             ng-class="alert.user.id === authUser.id ? 'panel-info' : 'panel-default'"
+             ng-repeat="alert in alerts | orderBy: '-created_at'">
+            <div class="panel-heading">
+                <h2 class="panel-title">
+                    <span class="pull-right">{{alert.price | currency}}</span>
+                    #{{alert.id}} {{alert.title}}
+                </h2>
+                <span class="text-muted">by {{alert.user.email}}, {{alert.created_at | date: 'dd/MM/yyyy HH:mm'}}</span>
+            </div>
+            <div class="panel-body">
+                <p>{{alert.content}}</p>
 
-<div zf-panel position="right" id="content" class="medium-grid-block collapse medium-6 large-8 vertical"
-     ng-if="activeAlert">
-    <div class="grid-content collapse shrink hide-for-medium">
-        <a href="#" class="secondary button expand" zf-close>Close</a>
-    </div>
-    <div class="grid-content collapse shrink">
-        <ul class="menu-bar primary" ng-if="activeAlert.user.id === authUser.id">
-            <li><a href="#" ng-click="editAlert(activeAlert)">Edit</a></li>
-            <li><a href="#" ng-click="deleteAlert(activeAlert)">Delete</a></li>
-        </ul>
-    </div>
-    <div class="grid-content">
-        <h1>#{{activeAlert.id}} {{activeAlert.title}}</h1>
-        <hr/>
-        <p>{{activeAlert.content}}</p>
-        <em>{{activeAlert.price | currency}}</em>
-        <strong>{{activeAlert.user.email}}</strong>
-        <small>{{activeAlert.created_at | date:'dd/MM/yyyy HH:mm'}}</small>
-        <pre>{{activeAlert | json}}</pre>
+                <div ng-if="alert.user.id === authUser.id">
+                    <a href="" ng-click="editAlert(alert)">Edit</a>
+                    -
+                    <a href="" ng-click="deleteAlert(alert)">Delete</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

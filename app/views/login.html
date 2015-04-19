@@ -1,32 +1,35 @@
-<div class="grid-block align-center vertical">
-    <div class="grid-block small-4">
-        <form ng-submit="login()" name="loginForm" role="form">
-            <alert type="danger" ng-show="error">Invalid credentials</alert>
-            <label>
-                Email
-                <input type="email" name="email"
+<form ng-submit="login()" name="loginForm" role="form" animatecss="error">
+    <alert type="danger" ng-show="error">Invalid credentials</alert>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">Login</h2>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email"
                        placeholder="Email"
                        ng-model="email" required>
-            </label>
-            <a href="#/password/remind" class="pull-right">Forgotten password ?</a>
-            <label>
-                Password
+            </div>
+            <div class="form-group">
+                <a href="#/password/remind" class="pull-right">Forgotten password ?</a>
+                <label for="password">Password</label>
                 <password ng-model="password" name="password"
                           placeholder="Password" required></password>
-            </label>
+            </div>
 
-            <button type="submit" class="btn btn-success"
-                    ng-disabled="loginForm.$invalid || loading"
-                    ladda="loading" data-style="zoom-out">
-                Login
-            </button>
-        </form>
+            <div class="form-group" style="margin-bottom: 0;">
+                <button type="submit" class="btn btn-success"
+                        ng-disabled="loginForm.$invalid || loading"
+                        ladda="loading" data-style="zoom-out">
+                    Login
+                </button>
+            </div>
+        </div>
     </div>
-    <div class="grid-block">
-        <p class=" text-center">
-            or <br/><br/>
-            <a href="#/signup" class="btn btn-primary">Create new account</a>
-        </p>
-    </div>
-</div>
+</form>
 
+<p class="text-center">
+    or <br/><br/>
+    <a href="#/signup" class="btn btn-primary">Create new account</a>
+</p>
