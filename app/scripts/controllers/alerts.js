@@ -11,8 +11,8 @@ angular.module('aratoApp')
     .controller('AlertsCtrl', AlertsCtrl)
     .controller('AddAlertModalCtrl', AddAlertModalCtrl);
 
-AlertsCtrl.$inject = ['$scope', 'AlertService', '$modal', 'ENV'];
-function AlertsCtrl($scope, AlertService, $modal, ENV) {
+AlertsCtrl.$inject = ['$scope', 'AlertService', '$modal'];
+function AlertsCtrl($scope, AlertService, $modal) {
     var DEFAULT_ALERT = {
         id      : undefined,
         title   : "",
@@ -20,32 +20,6 @@ function AlertsCtrl($scope, AlertService, $modal, ENV) {
         content : ""
     };
 
-    var socket = io.connect(ENV.nodePush);
-
-    socket.on('alert.created', function (response) {
-        console.log('alert.created', response);
-
-        // todo : only add if you are on the first page.
-        // todo : check with the pagination limit
-        $scope.$apply(function () {
-            addOrUpdate(response.data);
-        });
-    });
-    socket.on('alert.updated', function (response) {
-        console.log('alert.updated', response);
-        $scope.$apply(function () {
-            addOrUpdate(response.data);
-        });
-    });
-
-    socket.on('alert.deleted', function (response) {
-        console.log('alert.deleted', response);
-        $scope.$apply(function () {
-            $scope.alerts.remove(function (a) {
-                return a.id === response.data.id;
-            });
-        });
-    });
     activate();
 
     $scope.$watch('pagination.current_page', updateAlerts);
@@ -66,10 +40,16 @@ function AlertsCtrl($scope, AlertService, $modal, ENV) {
             page : $scope.pagination.current_page
         };
 
+        // to prevent ngAnimate
+        $scope.alerts = [];
+
+
         AlertService.index(params)
             .then(function (response) {
                 $scope.alerts = response.data;
                 $scope.pagination = response.paginate;
+            })
+            .finally(function () {
             });
     }
 
@@ -99,7 +79,6 @@ function AlertsCtrl($scope, AlertService, $modal, ENV) {
         }
 
         function errorCallback() {
-            console.info('Modal dismissed at: ' + new Date());
         }
     }
 
@@ -130,9 +109,7 @@ function AlertsCtrl($scope, AlertService, $modal, ENV) {
                             .catch(errorCallback);
 
                         function successCallback() {
-                            $scope.alerts.remove(function (a) {
-                                return a.id === alert.id;
-                            });
+                            updateAlerts();
                         }
 
                         function errorCallback(error) {
@@ -162,6 +139,8 @@ function AddAlertModalCtrl($scope, $modalInstance, alert, AlertService) {
 
     function ok() {
         $scope.loading = true;
+        $scope.error = false;
+
         AlertService.save($scope.alert.id, $scope.alert)
             .then(successCallback)
             .catch(errorCallback)
