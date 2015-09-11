@@ -1,0 +1,6 @@
+languages:
+  JavaScript: true
+exclude_paths:
+- "web.js"
+- "app/scripts/services/base64.js"
+- "app/scripts/vendors/"
