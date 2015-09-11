@@ -32,7 +32,7 @@ function ApiService($http, $q) {
 
     function show(url, id) {
         var fullUrl = url + '/' + id;
-        return sendGetRequest(fullUrl, id);
+        return sendGetRequest(fullUrl, {});
     }
 
     function save(url, id, data) {

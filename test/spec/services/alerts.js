@@ -33,7 +33,7 @@ describe('Service: AlertService', function () {
         var paginate = {};
 
         $httpBackend
-            .whenGET(RouteService.users)
+            .whenGET(RouteService.alerts)
             .respond({
                 "data"     : [
                     {
@@ -93,10 +93,10 @@ describe('Service: AlertService', function () {
     //
 
     it('should show a single alert', function () {
-        var alert = [];
+        var alert = {};
 
         $httpBackend
-            .whenGET(RouteService.users + "/2")
+            .whenGET(RouteService.alerts + "/2")
             .respond(200, {
                 "data" : {
                     "id"         : 2,
@@ -125,7 +125,7 @@ describe('Service: AlertService', function () {
     it('should fail if an alert is not found', function () {
         var error = [];
         $httpBackend
-            .whenGET(RouteService.users + "/0")
+            .whenGET(RouteService.alerts + "/0")
             .respond(404, {
                 "error" : {
                     "message"     : "Alert does not exist.",
@@ -150,7 +150,7 @@ describe('Service: AlertService', function () {
 
     it('should create a new alert given valid parameters', function () {
         $httpBackend
-            .whenPOST(RouteService.users)
+            .whenPOST(RouteService.alerts)
             .respond(201, {
                 "data" : {
                     "id"    : 3,
@@ -180,7 +180,7 @@ describe('Service: AlertService', function () {
 
     it('should fail if new alert fails validation', function () {
         $httpBackend
-            .whenPOST(RouteService.users)
+            .whenPOST(RouteService.alerts)
             .respond(400, {
                 "error" : {
                     "message"     : {
@@ -211,7 +211,7 @@ describe('Service: AlertService', function () {
 
     it('should fail if the user is not authenticated for creation', function () {
         $httpBackend
-            .whenPOST(RouteService.users)
+            .whenPOST(RouteService.alerts)
             .respond(401, {
                 "error" : {
                     "message"     : "Invalid credentials",
@@ -240,7 +240,7 @@ describe('Service: AlertService', function () {
     //
     it('should update an alert given valid parameters', function () {
         $httpBackend
-            .whenPUT(RouteService.users + "/1")
+            .whenPUT(RouteService.alerts + "/1")
             .respond(201, {
                 "data" : {
                     "id"         : 1,
@@ -277,7 +277,7 @@ describe('Service: AlertService', function () {
 
     it('should fail if updated alert fails validation', function () {
         $httpBackend
-            .whenPUT(RouteService.users + "/1")
+            .whenPUT(RouteService.alerts + "/1")
             .respond(400, {
                 "error" : {
                     "message"     : {
@@ -308,7 +308,7 @@ describe('Service: AlertService', function () {
 
     it('should fail if the user is not authenticated for update', function () {
         $httpBackend
-            .whenPUT(RouteService.users + "/1")
+            .whenPUT(RouteService.alerts + "/1")
             .respond(401, {
                 "error" : {
                     "message"     : "Invalid credentials",
@@ -334,7 +334,7 @@ describe('Service: AlertService', function () {
 
     it('should fail if the user is not authorized to update alert', function () {
         $httpBackend
-            .whenPUT(RouteService.users + "/1")
+            .whenPUT(RouteService.alerts + "/1")
             .respond(403, {
                 "error" : {
                     "message"     : "Forbidden",
@@ -360,7 +360,7 @@ describe('Service: AlertService', function () {
 
     it('should fail if the updated alert does not exist', function () {
         $httpBackend
-            .whenPUT(RouteService.users + "/1")
+            .whenPUT(RouteService.alerts + "/1")
             .respond(404, {
                 "error" : {
                     "message"     : "Alert does not exist.",
@@ -389,7 +389,7 @@ describe('Service: AlertService', function () {
     //
     it('should delete an alert', function () {
         $httpBackend
-            .whenDELETE(RouteService.users + "/1")
+            .whenDELETE(RouteService.alerts + "/1")
             .respond(204);
 
         var isDeleted = false;
@@ -406,7 +406,7 @@ describe('Service: AlertService', function () {
 
     it('should fail if the user is not authenticated for update', function () {
         $httpBackend
-            .whenDELETE(RouteService.users + "/1")
+            .whenDELETE(RouteService.alerts + "/1")
             .respond(401, {
                 "error" : {
                     "message"     : "Invalid credentials",
@@ -428,7 +428,7 @@ describe('Service: AlertService', function () {
 
     it('should fail if the user is not authorized to delete alert', function () {
         $httpBackend
-            .whenDELETE(RouteService.users + "/1")
+            .whenDELETE(RouteService.alerts + "/1")
             .respond(403, {
                 "error" : {
                     "message"     : "Forbidden",
@@ -450,7 +450,7 @@ describe('Service: AlertService', function () {
 
     it('should fail if the deleted alert does not exist', function () {
         $httpBackend
-            .whenDELETE(RouteService.users + "/1")
+            .whenDELETE(RouteService.alerts + "/1")
             .respond(404, {
                 "error" : {
                     "message"     : "Alert does not exist",

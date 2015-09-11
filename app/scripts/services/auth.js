@@ -35,6 +35,7 @@ function AuthService($q, $http, RouteService, $rootScope, $cookieStore, Base64) 
             .error(errorCallback);
 
         function successCallback(result) {
+            console.log("success");
             setCredentials(credentials, result.data);
             deferred.resolve();
         }
