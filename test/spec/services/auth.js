@@ -17,6 +17,7 @@ describe('Service: AuthService', function () {
             $rootScope = _$rootScope_;
             RouteService = _RouteService_;
         });
+        delete $rootScope.authUser;
     });
 
     afterEach(function () {
@@ -31,7 +32,7 @@ describe('Service: AuthService', function () {
         };
 
         $httpBackend
-            .whenPOST(RouteService.login)
+            .expectPOST(RouteService.login, credentials)
             .respond({
                 data : {
                     'id'              : 1,
@@ -41,7 +42,7 @@ describe('Service: AuthService', function () {
                 }
             });
 
-        AuthService.login(credentials);
+        AuthService.login(credentials.email, credentials.password);
         $rootScope.$apply();
         $httpBackend.flush();
 
@@ -51,13 +52,14 @@ describe('Service: AuthService', function () {
     });
 
     it('should fail login', function () {
+
         var credentials = {
-            email    : 'user1@email.com',
+            email    : 'user2@email.com',
             password : 'password'
         };
 
         $httpBackend
-            .whenPOST(RouteService.login)
+            .expectPOST(RouteService.login, credentials)
             .respond(401, {
                 "error" : {
                     "message"     : "Invalid credentials",
@@ -65,10 +67,9 @@ describe('Service: AuthService', function () {
                 }
             });
 
-        AuthService.login(credentials);
+        AuthService.login(credentials.email, credentials.password);
         $rootScope.$apply();
         $httpBackend.flush();
-
-        expect($rootScope.authUser.id).toBeUndefined();
+        expect($rootScope.authUser).toBeUndefined();
     });
 });
